@@ -1,5 +1,5 @@
 # URL to .psm1 file
-$Url = "https://raw.githubusercontent.com/alexverboon/posh/master/GroupPolicy/Gpext.psm1"
+$Url = "https://raw.githubusercontent.com/alexverboon/posh/master/GroupPolicy/GroupPolicyXtended.psm1"
 
 function Install-ModuleFromUri {
     Param([Parameter(Mandatory=$true,Position=0)][string]$Uri)
