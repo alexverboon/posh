@@ -17,11 +17,8 @@ function Install-ModuleFromUri {
     }
 
     # Download module
-    $modfile = Invoke-WebRequest $Uri -Method Get  -UseDefaultCredential -ContentType "text/plain; charset=tf-8" -OutFile c:\temp\out1.txt
-
+    Invoke-WebRequest $Uri -OutFile "$modpath\$modname.psm1" -UseDefaultCredential
     
-    #$modfile.Content | Out-File  "$modpath\$modname.psm1" -Encoding utf8
-
     # Import so it becomes immediately loaded
     Import-Module "$modpath\$modname.psm1" -Force
 
