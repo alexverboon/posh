@@ -1,4 +1,4 @@
-
+﻿
 function Update-GroupPolicyXtended{
     $ScriptURL = "https://raw.githubusercontent.com/alexverboon/posh/master/GroupPolicy/install-GroupPolicyXtended.ps1"
     $wc=New-Object System.Net.WebClient;$wc.UseDefaultCredentials=$true;iex $wc.DownloadString($ScriptURL)

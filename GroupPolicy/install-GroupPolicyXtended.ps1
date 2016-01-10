@@ -17,7 +17,7 @@ function Install-ModuleFromUri {
     }
 
     # Download module
-    Invoke-WebRequest $Uri -OutFile "$modpath\$modname.psm1" -UseDefaultCredential
+    Invoke-WebRequest $Uri -OutFile "$modpath\$modname.psm1" -UseDefaultCredential 
 
     # Import so it becomes immediately loaded
     Import-Module "$modpath\$modname.psm1" -Force
