@@ -1,5 +1,5 @@
 # URL to .psm1 file
-$Url = "https://raw.githubusercontent.com/alexverboon/posh/master/GroupPolicy/GroupPolicyXtended.psm1"
+$Url = "https://raw.githubusercontent.com/alexverboon/posh/master/GroupPolicy/Gpext.psm1"
 
 function Install-ModuleFromUri {
     Param([Parameter(Mandatory=$true,Position=0)][string]$Uri)
@@ -17,9 +17,10 @@ function Install-ModuleFromUri {
     }
 
     # Download module
-    $modfile = Invoke-WebRequest $Uri -UseDefaultCredential -ContentType "text/plain; charset=tf-8"
+    $modfile = Invoke-WebRequest $Uri -Method Get  -UseDefaultCredential -ContentType "text/plain; charset=tf-8" -OutFile c:\temp\out1.txt
+
     
-    $modfile.Content | Out-File  "$modpath\$modname.psm1" -Encoding utf8
+    #$modfile.Content | Out-File  "$modpath\$modname.psm1" -Encoding utf8
 
     # Import so it becomes immediately loaded
     Import-Module "$modpath\$modname.psm1" -Force

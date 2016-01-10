@@ -1,11 +1,10 @@
-﻿
+
 function Update-GroupPolicyXtended{
+    Write-Output "Updating GroupPolicyXtended module" 
     $ScriptURL = "https://raw.githubusercontent.com/alexverboon/posh/master/GroupPolicy/install-GroupPolicyXtended.ps1"
     $wc=New-Object System.Net.WebClient;$wc.UseDefaultCredentials=$true;iex $wc.DownloadString($ScriptURL)
 }
 Export-ModuleMember -Function Update-GroupPolicyXtended
-
-
 
 function Get-GPProcessingtime
 {
@@ -293,7 +292,4 @@ TimeCreated                     Id LevelDisplayName Message
 
 Set-Alias gpevtcor Get-GPEventByCorrelationID
 Export-ModuleMember -Function Get-GPEventByCorrelationID -Alias gpevtcor
-
-
-
 
