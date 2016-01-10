@@ -1,10 +1,10 @@
-$ScriptURL = "http://git.swissre.com/projects/WOR/repos/wpslib/browse/install-wpslib.ps1?raw"
 
-function Update-wpslib {
+function Update-GroupPolicyXtended{
+    $ScriptURL = "https://github.com/alexverboon/posh/blob/master/GroupPolicy/install-GroupPolicyXtended.ps1?raw"
     $wc=New-Object System.Net.WebClient;$wc.UseDefaultCredentials=$true;iex $wc.DownloadString($ScriptURL)
 }
+Export-ModuleMember -Function Update-GroupPolicyXtended
 
-Export-ModuleMember -Function Update-wpslib
 
 
 function Get-GPProcessingtime

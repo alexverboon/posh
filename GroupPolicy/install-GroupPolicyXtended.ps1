@@ -1,5 +1,5 @@
 # URL to .psm1 file
-$Url = "http://git.swissre.com/projects/WOR/repos/wpslib/browse/wpslib.psm1?raw"
+$Url = "https://github.com/alexverboon/posh/blob/master/GroupPolicy/GroupPolicyXtended.psm1?raw"
 
 function Install-ModuleFromUri {
     Param([Parameter(Mandatory=$true,Position=0)][string]$Uri)
