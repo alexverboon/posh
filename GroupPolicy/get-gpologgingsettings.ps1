@@ -10,7 +10,7 @@
    Another example of how to use this cmdlet
    http://blogs.technet.com/b/askds/archive/2015/04/17/a-treatise-on-group-policy-troubleshooting-now-with-gpsvc-log-analysis.aspx
 #>
-function Get-GPLoggingStatus
+function Get-GPServiceDebugStatus
 {
     [CmdletBinding()]
     Param
@@ -19,7 +19,7 @@ function Get-GPLoggingStatus
         [Parameter(Mandatory=$false,
                    ValueFromPipelineByPropertyName=$true,
                    Position=0)]
-        $Computer
+        [string[]]$Computer
     )
 
     Begin
@@ -30,6 +30,10 @@ function Get-GPLoggingStatus
     }
     Process
     {
+
+    ForEach ($c in $Computer)
+    {
+
         # GroupPolicy Logging Status
         $GPLoggingRegStatus = Get-ItemProperty -Path $GPLoggingRegPath -Name $GpLoggingRegKey | Select-Object -ExpandProperty GPSvcDebugLevel
         If ($GPLoggingRegStatus -eq $null -or $GPLoggingRegStatus -eq 0)
@@ -41,20 +45,22 @@ function Get-GPLoggingStatus
             $GPLoggingRegStatus = '{0:x}' -f $GPLoggingRegStatus
             if ($GPLoggingRegStatus -eq "30002")
             {
-                Write-Output "Group Policy Service Debug logging is enabled"
+                Write-verbose "Group Policy Service Debug logging is enabled"
             }
             Else
             {
-                Write-Output "GPSvcDebugLevel contains Unsupported value"
+                Write-verbose "The value set for GPSvcDebugLevel: $GPLoggingRegStatus is not supported"
             }
          }
+    
+
+     New-Object -TypeName psobject -Property @{
+     Computer = $c
+     GPServiceDebugStatus = $GPLoggingRegStatus
+     }
     }
 
-
-
-
-
-
+    }
 
     End
     {
