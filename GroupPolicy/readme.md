@@ -12,14 +12,14 @@ Run Update-GroupPolicyXtended to update the module to the latest version
 
 ## Topics
 
-# Get-GPEventByCorrelationID
+### Get-GPEventByCorrelationID
 
-#Get-GPProcessingtime      
+###Get-GPProcessingtime      
 
-#Set-GPLogging
+###Set-GPLogging
 
-#Get-GPLogging              
+###Get-GPLogging              
 
-#Update-GroupPolicyXtended 
+###Update-GroupPolicyXtended 
 
 
