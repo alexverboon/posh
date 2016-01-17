@@ -897,4 +897,11 @@ Process
 Set-Alias setgplogmode Set-GPLogging
 Export-ModuleMember -Function Set-GPLogging -Alias setgplogmode
 
+function Get-Dummy
+{
+    Write-Host "Helo Dummy Code" 
+
+}
+Export-ModuleMember -Function Get-Dummy
    
+
