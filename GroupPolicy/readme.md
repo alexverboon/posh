@@ -7,6 +7,9 @@ In order to install the module, open a PowerShell prompt and paste the following
 
 `$wc=New-Object System.Net.WebClient;$wc.UseDefaultCredentials=$true;iex $wc.DownloadString("https://raw.githubusercontent.com/alexverboon/posh/master/GroupPolicy/install-GroupPolicyXtended.ps1")`
 
+The module is installed into C:\Users\<username>\Documents\WindowsPowerShell\Modules\GroupPolicyXtended
+
+
 ## Update
 Run Update-GroupPolicyXtended to update the module to the latest version
 
@@ -21,5 +24,6 @@ Run Update-GroupPolicyXtended to update the module to the latest version
 ###Get-GPLogging              
 
 ###Update-GroupPolicyXtended 
+Run this cmdlet to update the module to the latest version. 
 
 
