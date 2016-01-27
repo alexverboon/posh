@@ -1,5 +1,16 @@
 
 function Update-GroupPolicyXtended{
+<#
+.Synopsis
+   Updates the GroupPolicyXtended PowerShell module
+.DESCRIPTION
+   The Update-GroupPolicyXtended updates the GroupPolicyXtended PowerShell module
+   by triggering the module installation script that downloads the latest version
+   published in https://raw.githubusercontent.com/alexverboon/posh/master/GroupPolicy
+.NOTES
+  Credits for this module update function go to my friend Claude Henchoz   
+  Version 1.0
+#>
     Write-Output "Updating GroupPolicyXtended module" 
     $ScriptURL = "https://raw.githubusercontent.com/alexverboon/posh/master/GroupPolicy/install-GroupPolicyXtended.ps1"
     $wc=New-Object System.Net.WebClient;$wc.UseDefaultCredentials=$true;iex $wc.DownloadString($ScriptURL)
