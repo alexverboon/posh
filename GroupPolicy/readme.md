@@ -18,9 +18,9 @@ Run Update-GroupPolicyXtended to update the module to the latest version
 ### Get-GPEventByCorrelationID
     This function retrieves Group Policy event log entries filtered by Correlation ID from the specified computer
 
-###Get-GPProcessingtime   
-   The Get-GPProcessingtime cmdlet gets Group Policy processing time for the user and computer related 
-   Group Policies that are processed on the specified computer(s). 
+###Get-GPProcessingtime
+    The Get-GPProcessingtime cmdlet gets Group Policy processing time for the user and computer related 
+    Group Policies that are processed on the specified computer(s). 
 
 ###Set-GPLogging
     The Set-GPLogging cmdlet enables or disables Group Policy Service or Group Policy Preferences
