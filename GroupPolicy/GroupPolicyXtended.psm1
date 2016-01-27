@@ -263,7 +263,16 @@ TimeCreated                     Id LevelDisplayName Message
 7/28/2014 5:31:31 PM          8002 Information      Completed policy processing due to network state change for co...
 7/28/2014 5:31:31 PM          5016 Information      Completed Audit Policy Configuration Extension Processing in 0...
 .......
- 
+.PARAMETER Computer
+    Type the NetBIOS name, an Internet Protocol (IP) address, or the fully qualified domain name of the computer. 
+    The default value is the local computer.
+
+.PARAMETER CorrelationID  
+   The CorrelationID (ActivityID) of the Group Policy processing event.   
+   
+   If you use the Get-GPProcessingtime cmdlet with the -showdetails switch you
+   get the CorrelationID of the last computer and user Group Poliy processing event.   
+
 #>
     [CmdletBinding()]
     Param
@@ -283,6 +292,16 @@ TimeCreated                     Id LevelDisplayName Message
  
     Begin
     {
+        If (Test-Connection -ComputerName "$Computer" -Count 1 -Quiet)
+        {
+            Write-Verbose "Computer: $Computer is online"
+        }
+        Else
+        {
+            Write-Verbose "Computer $Computer is NOT online" 
+            break
+        }
+
         $Query = '<QueryList><Query Id="0" Path="Application"><Select Path="Microsoft-Windows-GroupPolicy/Operational">*[System/Correlation/@ActivityID="{CorrelationID}"]</Select></Query></QueryList>'
         $FilterXML = $Query.Replace("CorrelationID",$CorrelationID)
     }
@@ -523,6 +542,7 @@ Process
         {
             $ClientOnline = $false
             Write-Verbose "Computer $comp is not online"
+            break
             #$ret = "0","unknown","unknown","$ClientOnline"
         }
 
@@ -885,6 +905,7 @@ Process
         {
             $ClientOnline = $false
             Write-Verbose "Computer $comp is not reachable"
+            break
             #$ret = "0","unknown","unknown","$ClientOnline","none","none"
         }
 
