@@ -1,3 +1,19 @@
+<#
+.Synopsis
+   Installs the GroupPolicyXtended PowerShell Module
+
+.DESCRIPTION
+   This script triggers the installation of the GroupPolicyXtended PowerShell
+   Module. The module is installed in
+   C:\Users\<username>\WindowsPowerShell\Modules\GroupPolicyXtended
+
+.NOTES
+   Credits for this module installer script goes to my friend Claude Henchoz   
+   
+   Version 1.0
+#>
+
+
 # URL to .psm1 file
 $Url = "https://raw.githubusercontent.com/alexverboon/posh/master/GroupPolicy/GroupPolicyXtended.psm1"
 
