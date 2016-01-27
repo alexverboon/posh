@@ -671,6 +671,7 @@ function Set-GPLogging
     Version 1.0 Alex Verboon, Initial Release
     version 1.1 Alex Verboon, Minor update to force preference settings when keys already exist. 
     Version 1.2 Alex Verboon, alligned parameters to the Get-GPLogging cmdlet
+    version 1.3 Alex Verboon, fixed an issue with creating registry key HKLM:\SOFTWARE\Policies\Microsoft\Windows\Group Policy when it did not exist yet
 #>
 
     [CmdletBinding()]
@@ -838,6 +839,7 @@ Process
                 {
                     Write-Verbose "Enabling $using:Preferencelog Preference logging"
                     $regpath =  "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Group Policy"
+                    New-Item -path $regpath -ErrorAction SilentlyContinue | Out-Null
                     New-Item -path $regpath -name "$plogpath" -ErrorAction SilentlyContinue | Out-Null
                     
                     # LogLevel 3 = Information, Warning and Errors, 2 = Warning and Errors, 1 = Errors Only, 0 = None
