@@ -8,7 +8,7 @@ $TemplateFile = [System.IO.Path]::Combine($PSScriptRoot, $TemplateFile)
 $ParameterFile = [System.IO.Path]::Combine($PSScriptRoot, $ParameterFile)
 
 
-Get-Content -Path $TemplateFile
+
 
 
 #New-AzureRmResourceGroupDeployment -Name "myvnetwork1" -ResourceGroupName "RG_2" -TemplateFile D:\DEV\azuredeploy.json -TemplateParameterFile D:\DEV\azuredeploy.parameters
