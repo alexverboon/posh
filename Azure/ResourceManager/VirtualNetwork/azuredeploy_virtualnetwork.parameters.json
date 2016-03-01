@@ -3,6 +3,6 @@
     "contentVersion": "1.0.0.0",
   "parameters": {
 
-    "vnetName" : { "value": ""}
+    "vnetName" : { "value": "Vnet2"}
   }
 }
