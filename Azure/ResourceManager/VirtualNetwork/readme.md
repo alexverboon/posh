@@ -10,12 +10,15 @@ This blog post contains examples on how to create a virtual network with Azure R
 
 ## Content
 **Azure Resource Manager Template for new Virtual Network with two subnets**
+
 azuredeploy_virtualnetwork.json
 
 **Azure Resource Manager template parameter file**
+
 azuredeploy_virtualnetwork.parameters.json
 
 **PowerShell command examples***
+
 new-virtualnetwork.ps1
 
 
