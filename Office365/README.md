@@ -1,4 +1,4 @@
-# My Azure Scripts
+# My Office 365 Scripts
 Here's were I keep my Office 365 Scripts
 
 # Utilities
