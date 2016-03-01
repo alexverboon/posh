@@ -13,6 +13,11 @@ This blog post contains examples on how to create a virtual network with Azure R
 
 azuredeploy_virtualnetwork.json
 
+<a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/alexverboon/posh/master/Azure/ResourceManager/VirtualNetwork/azuredeploy_virtualnetwork.json" target="_blank">
+    <img src="http://armviz.io/visualizebutton.png"/>
+</a>
+
+
 **Azure Resource Manager template parameter file**
 
 azuredeploy_virtualnetwork.parameters.json
@@ -20,5 +25,17 @@ azuredeploy_virtualnetwork.parameters.json
 **PowerShell command examples***
 
 new-virtualnetwork.ps1
+
+
+## Other Resources
+**Using Azure PowerShell with Azure Resource Manager**
+
+https://github.com/Azure/azure-content/blob/master/articles/powershell-azure-resource-manager.md
+
+**Deploy a Resource Group with Azure Resource Manager template**
+
+https://github.com/Azure/azure-content/blob/master/articles/resource-group-template-deploy.md
+
+
 
 
