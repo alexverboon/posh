@@ -13,11 +13,6 @@ This blog post contains examples on how to create a virtual network with Azure R
 
 azuredeploy_virtualnetwork.json
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https://raw.githubusercontent.com/alexverboon/posh/master/Azure/ResourceManager/VirtualNetwork/azuredeploy_virtualnetwork.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
-</a>
-
-
 <a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/alexverboon/posh/master/Azure/ResourceManager/VirtualNetwork/azuredeploy_virtualnetwork.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
