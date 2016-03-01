@@ -1,5 +1,6 @@
 ﻿
 
+
 # Login to Azure
         Try{
             $checkifconnected =Get-AzureRmVMImagePublisher -Location $location 
