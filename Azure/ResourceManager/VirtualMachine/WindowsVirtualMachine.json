@@ -10,11 +10,11 @@
       }
     },
 
-    "vmname": {
+    "vmName": {
       "type": "string",
       "minLength": 1,
       "maxLength": 16,
-      "metadata": { "Description": "VM name"}
+      "metadata": { "Description": "VM name" }
     },
 
 
@@ -43,13 +43,13 @@
         "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter."
       }
     },
-      "projectName": {
-          "type": "string",
-          "minLength": 1,
-          "metadata": {
-              "description": "ProjectOSDeploy"
-          }
+    "projectName": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "ProjectOSDeploy"
       }
+    }
   },
   "variables": {
     "imagePublisher": "MicrosoftWindowsServer",
