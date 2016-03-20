@@ -234,7 +234,7 @@
                   "fileUris": [
                     "https://raw.githubusercontent.com/alexverboon/posh/master/Azure/ResourceManager/VirtualMachine/CustomScript/CustomScript1.ps1"
                   ],
-                  "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('CustomScript1ScriptFolder'), '/', variables('CustomScript1ScriptFileName'))]"
+                  "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File CustomScript1.ps1')]"
                 }
               }
           }
