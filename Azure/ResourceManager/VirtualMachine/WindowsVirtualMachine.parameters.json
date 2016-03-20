@@ -14,9 +14,6 @@
         },
         "projectName": {
             "value": "MyOSDeployment"
-        },
-        "_artifactsLocation": {
-            "value": "https://saverboon1.file.core.windows.net/templates"
         }
     }
 }
