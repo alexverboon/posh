@@ -11,7 +11,6 @@ $Location = "westeurope"
 
 #Test with Template and parameter file
 Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateUri $TemplateFile -TemplateParameterUri $ParameterFile -Verbose
-
 New-AzureRmResourceGroupDeployment -Name "Deployvm_01"  -ResourceGroupName $ResourceGroupName -TemplateUri $TemplateFile -TemplateParameterUri $ParameterFile -Verbose
 
 

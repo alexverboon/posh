@@ -6,11 +6,11 @@
             "value": "Master_Admin"
         },
         "dnsNameForPublicIP": {
-            "value": "vm01"
+            "value": "alexvm01"
         },
 
       "vmname": {
-        "value": "vm01"
+        "value": "alexvm01"
       },
 
 	"adminpassword": {
