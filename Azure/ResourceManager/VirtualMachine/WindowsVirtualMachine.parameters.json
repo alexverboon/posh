@@ -9,7 +9,9 @@
             "value": "vm01"
         },
 
-      "vmname": { "value": "vm01" },
+      "vmname": {
+        "value": "vm01"
+      },
 
 	"adminpassword": {
           "value": "Access4theAdmin"
