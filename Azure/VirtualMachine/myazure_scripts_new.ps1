@@ -21,6 +21,10 @@
 
 #https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-ps-create-preconfigure-windows-resource-manager-vms/
 
+#http://blog.kloud.com.au/2016/02/10/synchronously-startstop-all-azure-resource-manager-virtual-machines-in-a-resource-group/
+
+
+
 ####################
 
 # added
