@@ -9,6 +9,16 @@
         "description": "Username for the Virtual Machine."
       }
     },
+
+    "vmname": {
+      "type": "string"
+      "minLength": 1,
+      "maxLength": 16,
+      "defaultValue": "vm1",
+      "metadata": { "Description": "VM name"}
+    },
+
+
     "adminPassword": {
       "type": "securestring",
       "metadata": {
