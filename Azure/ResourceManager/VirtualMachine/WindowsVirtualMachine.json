@@ -218,33 +218,6 @@
       },
       "resources": [
         {
-          "type": "extensions",
-          "name": "Microsoft.Insights.VMDiagnosticsSettings",
-          "apiVersion": "2015-06-15",
-          "location": "[resourceGroup().location]",
-          "tags": {
-            "displayName": "AzureDiagnostics"
-          },
-          "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-          ],
-          "properties": {
-            "publisher": "Microsoft.Azure.Diagnostics",
-            "type": "IaaSDiagnostics",
-            "typeHandlerVersion": "1.5",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-              "xmlCfg": "[base64(concat(variables('wadcfgxstart'), variables('wadmetricsresourceid'), variables('wadcfgxend')))]",
-              "storageAccount": "[variables('diagnosticsStorageAccountName')]"
-            },
-            "protectedSettings": {
-              "storageAccountName": "[variables('diagnosticsStorageAccountName')]",
-              "storageAccountKey": "[listkeys(variables('accountid'), '2015-06-15').key1]",
-              "storageAccountEndPoint": "https://core.windows.net"
-            }
-          }
-        },
-          {
               "name": "CustomScript1",
               "type": "extensions",
               "location": "[resourceGroup().location]",
@@ -260,12 +233,12 @@
                   "type": "CustomScriptExtension",
                   "typeHandlerVersion": "1.4",
                   "autoUpgradeMinorVersion": true,
-                  "settings": {
-                      "fileUris": [
-                          "[concat(parameters('_artifactsLocation'), '/', variables('CustomScript1ScriptFolder'), '/', variables('CustomScript1ScriptFileName'), parameters('_artifactsLocationSasToken'))]"
-                      ],
-                      "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('CustomScript1ScriptFolder'), '/', variables('CustomScript1ScriptFileName'))]"
-                  }
+                "settings": {
+                  "fileUris": [
+                    "https://raw.githubusercontent.com/alexverboon/posh/master/Azure/ResourceManager/VirtualMachine/CustomScript/CustomScript1.ps1"
+                  ],
+                  "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('CustomScript1ScriptFolder'), '/', variables('CustomScript1ScriptFileName'))]"
+                }
               }
           }
       ]

@@ -8,6 +8,10 @@
         "dnsNameForPublicIP": {
             "value": "myvm1"
         },
+
+	"adminpassword": {
+          "value": "Access4theAdmin"
+        },
         "projectName": {
             "value": "MyOSDeployment"
         },
