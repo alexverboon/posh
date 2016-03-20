@@ -17,6 +17,9 @@
 # https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-create-windows-powershell-resource-manager-template/
 # https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-ps-create-preconfigure-windows-resource-manager-vms/
 # https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-create-windows-powershell-resource-manager-template/
+# http://www.techdiction.com/2016/02/12/powershell-function-to-enable-winrm-over-https-on-an-azure-resource-manager-vm/
+
+#https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-ps-create-preconfigure-windows-resource-manager-vms/
 
 ####################
 
@@ -86,7 +89,7 @@ function xDeploy-MyAzureVM
         # Location
         [Parameter(Mandatory=$false,
                   ValueFromPipelineByPropertyName=$true)]
-        [string]$Location = "West Europe"
+        [string]$Location = "westeurope"
     )
 
 
@@ -110,10 +113,10 @@ function xDeploy-MyAzureVM
             Select-AzureSubscription -SubscriptionName $SubscriptionName;
 
             # virtual network
-            [string]$VNet = "VN_TestLab"
-            [string]$vnetsubnetname = "Default"
+            [string]$VNet = "VNet1"
+            [string]$vnetsubnetname = "Subnet-1"
             $subnetid = (Get-AzureRmVirtualNetwork | Where-Object{$_.name -eq "$vnet"} | Select-Object -ExpandProperty subnets | Where-Object {$_.Name -eq "$vnetsubnetname"}).id
-            $NetworkInterfaceName = "nic11"
+            $NetworkInterfaceName = "nic1_$vmname"
 
             # Get the StorageAccount
             $StorageAccount = Get-AzureRmStorageAccount -Name "sazureverboon01"
@@ -128,8 +131,11 @@ function xDeploy-MyAzureVM
             # Source Image Windows Client
             $SourceImagePublisher = "MicrosoftVisualStudio"
             $SourceImageOffer = "Windows" 
-            $SourceImageSku = "10-Enterprise" 
+            $SourceImageSku = "10-Enterprise-N" 
             $SourceImageVersion = "10.0.10242"
+
+            # Get-AzureRmVMImageSku -Location westeurope -PublisherName MicrosoftVisualStudio -Offer windows | Get-AzureRmVMImage
+
 
             # For Windows Server use the below values for source image
             # "MicrosoftWindowsServer" "WindowsServer" "2012-R2-Datacenter" "latest"
@@ -160,16 +166,20 @@ function xDeploy-MyAzureVM
 
         # Source Image from Galery
         $vmconfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName $SourceImagePublisher -Offer $SourceImageOffer -Skus $SourceImageSku -Version $SourceImageVersion 
-
+       
 
         # Networking
         $publicip = New-AzureRmPublicIpAddress -Name "PubIP_$VMName" -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod Dynamic 
-        $nicnew = New-AzureRmNetworkInterface -Name $NetworkInterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -PublicIpAddressId  $publicip.Id -SubnetId $subnetid
+        $nicnew = New-AzureRmNetworkInterface -Name $NetworkInterfaceName -ResourceGroupName $ResourceGroupName -Location $Location -PublicIpAddressId  $publicip.Id -SubnetId $subnetid 
         $vmconfig = Add-AzureRmVMNetworkInterface -Id $nicnew.Id -VM $vmconfig 
-
-
  
         New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $vmconfig -Verbose
+        Set-AzureRmVMCustomScriptExtension -VMName $VMName -ResourceGroupName $ResourceGroupName -FileUri "https://raw.githubusercontent.com/alexverboon/posh/master/Azure/ResourceManager/VirtualMachine/CustomScript/CustomScript1.ps1" -Run "CustomScript1.ps1" -Name "script1" -Location $Location 
+
+        
+        
+        # domain join
+        # https://github.com/Azure/azure-powershell/issues/1316
     }
     End
     {
@@ -177,6 +187,8 @@ function xDeploy-MyAzureVM
     }
 } 
 
+
+#https://azure.microsoft.com/en-in/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/#start
 
 
 Function xRemove-MyAzureVM
@@ -291,30 +303,29 @@ Function xStop-MyAzureVM
     [CmdletBinding()]
     Param ([Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true,Position=0)] 
     [string]$VMName,
+    [string]$ResourceGroupName,
     [switch]$StayProvisioned
     )
 
      Begin{
-        $SubscriptionName = 'Visual Studio Professional with MSDN';
-        Select-AzureSubscription -SubscriptionName $SubscriptionName;
-        [string]$AzureServiceName = (Get-AzureService).ServiceName
-        Write-Output "Azure Service Name: $AzureServiceName"
-    }
+
+
+
+
+     }
 
     Process
     {
         if ($PSBoundParameters.ContainsKey("StayProvisioned"))
             {
-                Stop-AzureVM -Name $VMName -ServiceName $AzureServiceName -StayProvisioned
+                Stop-AzureRmVM -Name $VMName -StayProvisioned -ResourceGroupName $ResourceGroupName 
             }
         Else
             {
-                Stop-AzureVM -Name $VMName -ServiceName $AzureServiceName
+                Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
             }
     }
-
     End{}
-
 }
 
 
@@ -331,21 +342,34 @@ Function xStart-MyAzureVM
    Starts the virtual machine 
 #>
 
-    [CmdletBinding()]
+    [cmdletbinding(SupportsShouldProcess=$True)]
     Param ([Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true,Position=0)] 
-    [string]$VMName
+    [string[]]$VM,
+    [string]$ResourceGroupName
     
     )
      Begin{
-        $SubscriptionName = 'Visual Studio Professional with MSDN';
-        Select-AzureSubscription -SubscriptionName $SubscriptionName;
-        [string]$AzureServiceName = (Get-AzureService).ServiceName
-        Write-Output "Azure Service Name: $AzureServiceName"
+
     }
 
     Process
     {
-        Start-AzureVM -Name $VMName -ServiceName $AzureServiceName
+        ForEach ($vmachine in $VM)
+        {
+        $vmstatus = Get-AzureRMVM -ResourceGroupName $ResourceGroupName -name $vmachine -Status       
+        $PowerState = (get-culture).TextInfo.ToTitleCase(($vmstatus.statuses)[1].code.split("/")[1])
+
+        If ($PowerState -eq "Running")
+        {
+            Write-Output "VM $vmachine is already running"
+        }
+        Else
+        {
+        
+        }
+            Write-Output "VM $vmachine is started"
+            #Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName 
+        }
     }
 
     End{}
