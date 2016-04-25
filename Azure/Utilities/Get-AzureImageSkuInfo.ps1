@@ -25,7 +25,7 @@ function Get-AzureImageSkuInfo
    Get-AzureImageSkuInfo
 .EXAMPLE
     $allvimg = Get-AzureImageSkuInfo
-    $allimg | Where-Object {$_.offer -like "windows"}
+    $allvimg | Where-Object {$_.offer -like "windows"}
 
 .NOTES
   Version 1.0, Alex Verboon
@@ -40,12 +40,12 @@ Begin{
     # Use the below command to find other valid locations
     #Get-AzureRmResourceProvider -ListAvailable | Select-Object -ExpandProperty ResourceTypes | Select-Object -ExpandProperty Locations -Unique
     Try{
-        $Publishers =Get-AzureRmVMImagePublisher -Location "West Europe" 
+        $Publishers =Get-AzureRmVMImagePublisher -Location "westeurope" 
     }
     Catch{
         # okay looks liek we're not yet connected
         Login-AzureRmAccount
-        $Publishers =Get-AzureRmVMImagePublisher -Location "West Europe" 
+        $Publishers =Get-AzureRmVMImagePublisher -Location "westeurope" 
     }
 }
 
