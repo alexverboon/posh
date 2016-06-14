@@ -19,6 +19,8 @@
  # https://technet.microsoft.com/en-us/library/dn771771.aspx
  # https://technet.microsoft.com/en-us/library/dn771773.aspx
 
+Version 1.1 - added ENTERPRISEWITHSCAL license option
+
 #>
 function Get-Office365AccountSkuLicensedUsers
 {
@@ -31,7 +33,7 @@ function Get-Office365AccountSkuLicensedUsers
                    ParameterSetName = "AccountSkuId",
                    ValueFromPipelineByPropertyName=$true,
                    Position=0)]
-        [ValidateSet("ENTERPRISEPACK","RIGHTSMANAGEMENT","AAD_PREMIUM","PLANNERSTANDALONE","POWER_BI_STANDARD")]
+        [ValidateSet("ENTERPRISEPACK","RIGHTSMANAGEMENT","AAD_PREMIUM","PLANNERSTANDALONE","POWER_BI_STANDARD","ENTERPRISEWITHSCAL")]
         $AccountSkuId
     )
 
