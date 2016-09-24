@@ -8,8 +8,8 @@ function Start-AppCert
    specified application and retrurns the test results. 
 
 .DESCRIPTION
-    The Start-AppCert cmdlet launches the Windows App Certification Kit that runs the 
-    following tests for the specified software. 
+    The Start-AppCert cmdlet launches the Windows App Certification Kit that runs
+    the following tests for the specified software. 
 
     1      Clean reversible install test            
     2      Install to the correct folders test      
@@ -61,18 +61,47 @@ function Start-AppCert
 .EXAMPLE
    Start-AppCert -SetupPath C:\data\winzip20_downwz.exe
 
+
+    Name                                                   Result  Description                           
+    ----                                                   ------  -----------                           
+    Remove all non-shared files and folders                PASS    All newly installed programs were p...
+    Do not force an immediate reboot during installation   PASS    Users should have the opportunity t...
+    Do not force an immediate reboot during uninstallation PASS    Users should have the opportunity t...
+    Write appropriate Add/Remove Program values            PASS    Write appropriate Add/Remove Progra...
+    Single user registry check                             PASS    Checks invalid writes to registry o...
+    Install to Program Files                               PASS    Install to Program Files description. 
+    Write to the %WINDIR% or %SystemDrive%                 WARNING Write to the %WINDIR% or %SystemDri...
+    Loading apps on Windows startup                        WARNING Loading apps on Windows startup.      
+    Install signed driver and executable files             WARNING Install signed driver and executabl...
+    Install platform specific files, and drivers           PASS    Install platform specific files, an...
+    Proper OS version checking                             FAIL    Perform proper OS version checking ...
+    User account control run level                         PASS    Windows® applications must have a m...
+    Don't block reboot                                     WARNING Don't block reboot.                   
+    Do not load services and drivers in safe mode          PASS    By default, most drivers and servic...
+    Multi user check logs                                  PASS    Multi User checks App-Verifier logs.  
+    Multi user registry check                              PASS    Checks invalid writes to registry o...
+    Do not write to the 'Users' folder                     PASS    Do not write to the 'Users' folder.   
+    Crashes and hangs                                      FAIL    Do not crash or hang during the tes...
+    Compatibility fixes                                    PASS    Compatibility fixes.                  
+    User mode hooking using AppInit_DLLs                   PASS    User mode hooking using AppInit_DLLs. 
+    Compatibility manifest                                 PASS    Windows® applications must have a c...
+    Binary analyzer                                        WARNING Analysis of security features enabl...
+    High-DPI                                               PASS    Win32 applications should set DPI-a...
+
+.NOTES
+    24.09.2016 by Alex Verboon
 #>
 
     [CmdletBinding()]
     Param
     (
-        # Param1 help description
+        # The path to the Application instalaltion file (MSI / EXE)
         [Parameter(Mandatory=$true,
                    ValueFromPipelineByPropertyName=$true,
                    Position=0)]
         [string]$SetupPath,
 
-        # Param2 help description
+        # The installation commandline option: Example /quiet
        [Parameter(Mandatory=$false,
                    ValueFromPipelineByPropertyName=$true,
                    Position=1)]
