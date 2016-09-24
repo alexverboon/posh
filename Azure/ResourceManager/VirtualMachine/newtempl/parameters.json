@@ -3,25 +3,23 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualMachines_vm_adminPassword": {
-            "value": null
+            "value": "Access4theAdmin"
         },
         "virtualMachines_vm_name": {
-            "value": "vm73"
+            "value": "vm74"
         },
         "networkInterfaces_name": {
-            "value": null
+            "value": "vm74"
         },
         "networkSecurityGroups_vm_name": {
-            "value": null
+            "value": "vm74"
         },
         "publicIPAddresses_vm_name": {
-            "value": null
+            "value": "vm74"
         },
         "storageAccounts_rg_name": {
-            "value": null
-        },
-        "networkInterfaces_vm_id": {
-            "value": null
+            "value": "saverboon1"
         }
+     
     }
 }

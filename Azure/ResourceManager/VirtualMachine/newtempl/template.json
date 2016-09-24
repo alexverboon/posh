@@ -7,19 +7,19 @@
             "type": "String"
         },
         "virtualMachines_vm_name": {
-            "defaultValue": "vm73",
+            "defaultValue": "vm74",
             "type": "String"
         },
         "networkInterfaces_vm_name": {
-            "defaultValue": "vm73",
+            "defaultValue": "vm74",
             "type": "String"
         },
         "networkSecurityGroups_vm_name": {
-            "defaultValue": "vm73",
+            "defaultValue": "vm74",
             "type": "String"
         },
         "publicIPAddresses_vm_name": {
-            "defaultValue": "vm73",
+            "defaultValue": "vm74",
             "type": "String"
         },
         "storageAccounts_rg_name": {
