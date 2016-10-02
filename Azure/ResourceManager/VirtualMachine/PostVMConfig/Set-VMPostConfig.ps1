@@ -83,7 +83,7 @@ function Set-VMPostConfiguration
         Set-AzureRmVMExtension -ResourceGroupName $ResourceGroup -VMName "$VM" -ExtensionType "JsonADDomainExtension" -Name "joindomain" -Publisher "Microsoft.Compute" -TypeHandlerVersion "1.0" -Location $Location -SettingString $DomainINfo -ProtectedSettingString $Password
 
         # WinRM
-        https://github.com/Azure/azure-quickstart-templates/tree/3c9980dd6baf21e84e48fcc9028ee54b3c0269f6/201-vm-winrm-windows
+        #https://github.com/Azure/azure-quickstart-templates/tree/3c9980dd6baf21e84e48fcc9028ee54b3c0269f6/201-vm-winrm-windows
 
 
 

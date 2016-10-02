@@ -23,9 +23,14 @@ EXAMPLE
   List all storage blobs and output the lease status
 
 .EXAMPLE
-  Get-AzureBlobInfo | Where-Object {($_.name).split(".")[-1] -like "vhd" }
+  Get-AzureBlobInfo | Where-Object {($_.name).split(".")[-1] -like "vhd" } | Select-Object Name,STorageaccount,LeaseStatus
 
-  List all vhd files
+.EXAMPLE
+  Get-AzureBlobInfo | Where-Object {($_.name).split(".")[-1] -like "vhd" } | Select-Object Name,STorageaccount,LeaseStatus,{($_.StorageAccountKey)[0].value} | fl
+
+  List all vhd files and the storage account key, so you have all information required for removal
+
+
 
 
 #>

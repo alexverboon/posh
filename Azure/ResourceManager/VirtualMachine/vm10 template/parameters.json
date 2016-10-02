@@ -1,0 +1,48 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "westeurope"
+        },
+        "virtualMachineName": {
+            "value": "vm10"
+        },
+        "virtualMachineSize": {
+            "value": "Basic_A2"
+        },
+        "adminUsername": {
+            "value": "Master_Admin"
+        },
+        "storageAccountName": {
+            "value": "rg11099"
+        },
+        "virtualNetworkName": {
+            "value": "VNet1"
+        },
+        "networkInterfaceName": {
+            "value": "vm10558"
+        },
+        "networkSecurityGroupName": {
+            "value": "vm10-nsg"
+        },
+        "adminPassword": {
+            "value": "Access4theAdmin"
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "rg11099"
+        },
+        "diagnosticsStorageAccountId": {
+            "value": "/subscriptions/fac764d2-d579-41e0-ba9d-d787cf339faf/resourceGroups/rg_1/providers/Microsoft.Storage/storageAccounts/rg11099"
+        },
+        "subnetName": {
+            "value": "Subnet-1"
+        },
+        "publicIpAddressName": {
+            "value": "vm10-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        }
+    }
+}

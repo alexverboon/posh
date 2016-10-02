@@ -1,12 +1,10 @@
 # My Azure Scripts
 Here's were I keep my Azure scripts. 
 
-# Virtual Machine Management
-... comming soon
 
 
 #Resource Manager
-This folder contains scripts and templates for Azure Resource Manager. 
+This folder contains scripts and templates to deploy resources using Azure Resource Manager
 
 # Utilities
 ## Get-AzureImageSkuInfo.ps1
