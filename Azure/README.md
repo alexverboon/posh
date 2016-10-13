@@ -31,3 +31,8 @@ are not linked to an existing Azure VirtualMachine.
 Use the Cleanup-AzureRmSecurityGroup to remove Azure Network Security Groups that are not
 associated with any Subnet or Network interface being empty.
 
+# Other sources
+Manage Azure Virtual Machines using Resource Manager and PowerShell
+https://azure.microsoft.com/en-gb/documentation/articles/virtual-machines-windows-ps-manage/
+
+
