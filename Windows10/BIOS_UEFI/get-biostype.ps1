@@ -1,5 +1,5 @@
 
-# https://gallery.technet.microsoft.com/scriptcenter/Determine-UEFI-or-Legacy-7dc79488
+# Source:  https://gallery.technet.microsoft.com/scriptcenter/Determine-UEFI-or-Legacy-7dc79488
 
 
 Function Get-BiosType {
