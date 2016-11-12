@@ -8,6 +8,8 @@
 .EXAMPLE
    Get-WinBuildInfo
 .NOTES
+    Sites with Windows build information:
+    http://changewindows.org/platform/desktop
     https://buildfeed.net/
     https://technet.microsoft.com/en-us/windows/release-info.aspx
     https://support.microsoft.com/en-us/help/12387/windows-10-update-history?ocid=client_wu
