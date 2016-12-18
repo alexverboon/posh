@@ -1,4 +1,7 @@
-﻿<#
+﻿
+function Get-MsolUserInformation
+{
+<#
 .Synopsis
    Get-MsolUserInformation
 .DESCRIPTION
@@ -54,10 +57,8 @@ This command lists all Azure Directory users that have the PasswordNeverExpires 
 .NOTES
 Version 1.0, 20.11.2016, Alex Verboon
 
-
 #>
-function Get-MsolUserInformation
-{
+
 [CmdLetBinding(DefaultParameterSetName="None")]
     Param
     (
