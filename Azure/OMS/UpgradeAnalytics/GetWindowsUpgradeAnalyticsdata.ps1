@@ -13,8 +13,11 @@
 # Find OMS Workspaces
 Find-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 
-$ResourceGroupName = "mms-weu"
-$WorkSpaceName = "AlexVerboonOMS" 
+#$ResourceGroupName = "mms-weu"
+#$WorkSpaceName = "AlexVerboonOMS" 
+
+$ResourceGroupName = "RG-OMSWorkplace"
+$WorkSpaceName = "OMSWorkplace" 
 
 # Get Saved Searches 
 $query = Get-AzureRmOperationalInsightsSavedSearch `
@@ -43,13 +46,22 @@ $result = Get-AzureRmOperationalInsightsSavedSearchResults `
 $Drivers = $result.value | ConvertFrom-Json
 
 # A custom query
-$dynamicQuery = "Manufacturer=*"
-$result = Get-AzureRmOperationalInsightsSearchResults -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkSpaceName -Query $dynamicQuery -Top 10
+$dynamicQuery = "* Type=MyComputers_CL"
+$result = Get-AzureRmOperationalInsightsSearchResults -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkSpaceName -Query $dynamicQuery -Top 100
 $result.Value | ConvertFrom-Json
 
+$dynamicQuery = "* Type=MyData1_CL"
+$result = Get-AzureRmOperationalInsightsSearchResults -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkSpaceName -Query $dynamicQuery -Top 100
+$result.Value | ConvertFrom-Json
+
+$dynamicQuery = "AlexComputerInfo_CL"
+$result = Get-AzureRmOperationalInsightsSearchResults -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkSpaceName -Query $dynamicQuery -Top 100
+$result.Value | ConvertFrom-Json
+
+$dynamicQuery = ""
 
 $schema = Get-AzureRmOperationalInsightsSchema -ResourceGroupName $ResourceGroupName -WorkspaceName $WorkSpaceName
-$schemas = $schema.Value | Select-Object Name| Sort-Object Name
+$schemas = $schema.Value #| Select-Object Name| Sort-Object Name
 
 
 $datainfo = @()
