@@ -56,7 +56,7 @@ Process{
 
 End
 {
-   $Results
+   write-output $Results
 }
 }
 

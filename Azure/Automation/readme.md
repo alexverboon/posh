@@ -1,16 +1,20 @@
-﻿# Azure Automation
+﻿# Azure Automation 
+Work Notes and sample scripts I created while learning Azure Automation
 
 
-## Azure Automation ISE Add-in
-## Installation
+## Start-AzureCloudVM_workflow.ps1
+Sample of a workflow runbook to start an Azure VM
 
-### From PowerShell Gallery (recommended)
-To install from the [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/):
-* Open the PowerShell console
-* Run `Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser`
+## Start-AzureCloudVM_script.ps1
+Sample of powershell script runbook to start an Azure VM
 
-If you want the PowerShell ISE to always automatically load the Azure Automation ISE add-on:
-* Run `Install-AzureAutomationIseAddOn`
+## Start-AutomationRunbookPS.ps1
+Sample of starting an Automation Runbook from PowerShell
 
-If not:
-* Any time you want to use the Azure Automation ISE add-on in the PowerShell ISE, run `Import-Module AzureAutomationAuthoringToolkit` in the PowerShell ISE
+
+
+# Documentation references
+https://docs.microsoft.com/en-us/azure/automation/automation-solution-vm-management
+https://docs.microsoft.com/en-us/azure/automation/automation-first-runbook-textual
+https://docs.microsoft.com/en-us/azure/automation/automation-runbook-output-and-messages
+
