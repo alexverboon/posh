@@ -1,12 +1,14 @@
-﻿# https://docs.microsoft.com/en-us/azure/automation/automation-starting-a-runbook#starting-a-runbook-with-windows-powershell
+﻿<#
+Sample script to start an Azure Automation Job from PowerShell
 
-
+#>
 
 $runbookName = "Start-AzureCloudVM"
 $RbResourceGroupName = "RG_automation01"
 $AutomationAcct = "Automation01"
 $VMName = "win10vm2"
 $ResourceGroupName = "RG_win10vm02"
+
 
 $params = @{
     Name = $VMName;
@@ -24,9 +26,4 @@ While ($doLoop) {
 }
 
 Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $RbResourceGroupName –Stream Output 
-
-
-
-
-
 
