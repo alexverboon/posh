@@ -5,8 +5,9 @@ function Get-BatteryChargeStatus
 .Synopsis
    Get-BatteryChargeStatus
 .DESCRIPTION
-   Get-BatteryChargeStatus shows the Battery Charging status and
-   the remaining Battery capacity in percent. 
+   Get-BatteryChargeStatus shows the Battery Charging status,
+   the remaining Battery capacity in percent and if the system
+   is running on Battery.
 
    The Battery Status can have one of the following values:
    Charging, Discharging, Idle or NotPresent
@@ -16,9 +17,10 @@ function Get-BatteryChargeStatus
 .EXAMPLE
    Get-BatteryChargeStatus
 
-Status Utilization
------- -----------
-Charging        99
+Status Utilization PowerOnline
+------ ----------- -----------
+Charging        99        True
+
 
 .EXAMPLE
    Get-BatteryChargeStatus -Detail
@@ -29,6 +31,7 @@ FullChargeCapacityInMilliwattHours : 70222
 RemainingCapacityInMilliwattHours  : 69689
 Status                             : Charging
 Utilization                        : 99
+PowerOnline                        : True
 
 .NOTES
  Author: Alex Verboon
@@ -46,19 +49,38 @@ Utilization                        : 99
 
     Begin
     {
-        $Report = [Windows.Devices.Power.Battery]::AggregateBattery.GetReport() 
-        
+        Try{
+            $Report = [Windows.Devices.Power.Battery]::AggregateBattery.GetReport() 
+        }
+        Catch{
+            Write-Error "Unable to retrieve Battery Report information"
+            Break
+        }
+
         If ($Report.Status -ne "NotPresent")
         {
             $pbmax = [convert]::ToDouble($Report.FullChargeCapacityInMilliwattHours)
             $pbvalue = [convert]::ToDouble($Report.RemainingCapacityInMilliwattHours)
             $Utilization = [int][math]::Round( (($pbvalue / $pbmax) *100))
+            $PowerOnlineStatus = (Get-CimInstance -ClassName batterystatus -Namespace root/WMI).PowerOnline
+
+            # Check if at least one battery reports running on power
+            If ($PowerOnlineStatus -contains "True")
+            {
+               $PowerOnline = $true
+            }
+            Else
+            {
+               $PowerOnline = $false
+            }
         }
         Else
         {
             [int]$Utilization = 0
+            $PowerOnline = ""
         }
     }
+
     Process
     {
         If ($Detail -eq $true)
@@ -70,6 +92,7 @@ Utilization                        : 99
             RemainingCapacityInMilliwattHours = $Report.RemainingCapacityInMilliwattHours
             Status = $Report.Status
             Utilization = $Utilization
+            PowerOnline = $PowerOnline
             }
             $BatteryChargeStatus = (New-Object -TypeName PSObject -Property $Properties)
         }
@@ -78,6 +101,7 @@ Utilization                        : 99
             $Properties = [ordered] @{
             Status = $Report.Status
             Utilization = $Utilization
+            PowerOnline = $PowerOnline
             }
             $BatteryChargeStatus = (New-Object -TypeName PSObject -Property $Properties)
         }
