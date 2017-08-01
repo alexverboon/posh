@@ -34,12 +34,12 @@ Utilization                        : 99
 PowerOnline                        : True
 
 .NOTES
- Author: Alex Verboon
-
+ 30/07/2017, Initial version, Alex Verboon
+ 01/08/2017, added class init to check that Windows.Device class is available. 
+ 
  For more information see: 
  https://docs.microsoft.com/en-us/uwp/api/windows.devices.power.batteryreport
  
-
 #>
     [CmdletBinding()]
     Param
@@ -49,6 +49,16 @@ PowerOnline                        : True
 
     Begin
     {
+        Try{
+            # First ensure Windows.Devices class is available            
+            $BattAssembly = [Windows.Devices.Power.Battery,Windows.Devices.Power.Battery,ContentType=WindowsRuntime] 
+            #[Windows.Devices.Power.Battery].Assembly
+        }
+        Catch
+        {
+            Write-Error "Unable to load the Windows.Devices.Power.Battery class"
+        }
+        
         Try{
             $Report = [Windows.Devices.Power.Battery]::AggregateBattery.GetReport() 
         }
@@ -81,6 +91,7 @@ PowerOnline                        : True
         }
     }
 
+
     Process
     {
         If ($Detail -eq $true)
@@ -111,16 +122,3 @@ PowerOnline                        : True
         $BatteryChargeStatus
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
