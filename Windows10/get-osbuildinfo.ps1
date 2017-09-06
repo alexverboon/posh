@@ -60,6 +60,10 @@ End
 }
 }
 
+Get-WinBuildInfo
+
+
+
 
 
 
