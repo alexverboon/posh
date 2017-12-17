@@ -8,6 +8,11 @@
    The Update-PoshModule cmdlet checks whether a newwer PowerShell Module version is available and when found
    installs it. Optionally previous versions of the Module can be removed. 
 
+    Note that the Update-PoshModule cmdlet only looks for PowerShell modules installed in Allusers 
+    scope i.e. "C:\Program Files\WindowsPowerShell\Modules" and 
+    CurrentUserr i.e. "C:\Users\alexv\Documents\WindowsPowerShell"
+
+
 .PARAMETER Repository
    The name of the Repository if no value is provided the PSGallery repository is used. 
 
@@ -41,6 +46,13 @@
 
    The above command checks whether there is a new moduole version available for Pester, installs it
    and removes older local installed versions. 
+
+.EXAMPLE
+  $modulestatus = Update-PoshModule -ModulePrefix AzureRM.S -whatif -ReturnOutput
+  $modulestatus
+
+  The above command stores all the local and remote powershell modules into the $modulestatus variable. 
+
 
 .NOTES
    v1, 17.12.2017, alex verboon
@@ -151,6 +163,7 @@
               LocalPath = $mod.path
               RemoteVersion = $latestrepo.version
               RemoteName = $latestrepo.Name
+              PublishedDate = $latestrepo.publisheddate
               }
               $RepoCompare += (New-Object PSObject -Property $object)
             }
@@ -170,6 +183,7 @@
             Write-Output "Installed version : $($entry.LocalVersion)"
             Write-Output "ModulePath        : $($entry.localpath)"
             Write-Output "Latest version    : $($entry.RemoteVersion)"
+            Write-Output "PublishedDate     : $($entry.PublishedDate)"
 
             If ([System.Version]"$($entry.LocalVersion)" -eq [system.version]"$($entry.RemoteVersion)" -eq $true)
             {
