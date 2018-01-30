@@ -20,9 +20,9 @@ function Get-AuditPolicySettings
     Begin
     {
          If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
-         {    
-          Echo "This script needs to be run As Admin"
-          Break
+         {
+        Echo "This script needs to be run As Admin"
+        Break
          }
     }
     Process

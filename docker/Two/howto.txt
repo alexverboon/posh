@@ -1,0 +1,12 @@
+git clone https://github.com/Azure-Samples/aci-helloworld.git
+
+docker build ./aci-helloworld -t aci-tutorial-app
+docker run -d -p 8080:80 aci-tutorial-app
+
+docker run -d -p 8081:80 alex:web
+
+docker tag aci-tutorial-app alex:web
+
+
+
+

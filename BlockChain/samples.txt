@@ -1,0 +1,84 @@
+0x627306090abab3a6e1400e9345bc60c78a8bef57
+0xf17f52151ebef6c7334fad080c5704d77216b732
+0xc5fdf4076b8f3a5357c5e395ab970b5b54098fef
+
+MetaCoin.getBalance('0x627306090abab3a6e1400e9345bc60c78a8bef57')
+MetaCoin.getBalance('0xf17f52151ebef6c7334fad080c5704d77216b732')
+MetaCoin.getBalance('0xc5fdf4076b8f3a5357c5e395ab970b5b54098fef')
+
+web3.eth.getBalance('0x627306090abab3a6e1400e9345bc60c78a8bef57')
+web3.eth.getBalance('0xf17f52151ebef6c7334fad080c5704d77216b732')
+web3.eth.getBalance('0xc5fdf4076b8f3a5357c5e395ab970b5b54098fef')
+
+MetaCoin.sendCoin('0xf17f52151ebef6c7334fad080c5704d77216b732', 123, {from: '0xc5fdf4076b8f3a5357c5e395ab970b5b54098fef'});
+
+web3.eth.sendTransaction({from: '0xC5fdf4076b8F3A5357c5E395ab970B5B54098Fef', to: '0xf17f52151ebef6c7334fad080c5704d77216b732', value: web3.toWei(5, 'ether'), gasLimit: 21000, gasPrice: 20000000000})
+
+
+// get accounts
+
+web3.eth.accounts
+
+// get reference to deployed contract
+
+var MetaCoin;
+MetaCoin.deployed().then(function(deployed) {MetaCoin = deployed;});
+
+// get balance of account 0
+MetaCoin.getBalance.call(web3.eth.accounts[0])
+
+// send coins
+var account0 = web3.eth.accounts[0];
+var account1 = web3.eth.accounts[1];
+MetaCoin.sendCoin(account1, 1000, {from: account0});
+
+https://github.com/trufflesuite/truffle-contract
+https://dzone.com/articles/ethereum-hello-world-example-using-solc-and-web3
+
+npm install solc
+
+
+https://ethereum.stackexchange.com/questions/17983/compiling-solidity-code-using-solc0-4-10-on-node-js
+
+
+const fs = require("fs");
+abiDecoder = require('abi-decoder');
+Web3 = require('web3');
+solc = require('solc');
+
+
+var input = {
+	'ConvertLib.sol': fs.readFileSync('contracts/ConvertLib.sol', 'utf8'),
+	'MetaCoin.sol': fs.readFileSync('contracts/MetaCoin.sol', 'utf8'),
+};
+
+
+
+let compiledContract = solc.compile({sources: input}, 1);
+let abi = compiledContract.contracts['MetaCoin.sol:MetaCoin'].interface;
+let bytecode = '0x'+compiledContract.contracts['MetaCoin.sol:MetaCoin'].bytecode;
+
+let abi2 = JSON.parse(compiledContract.contracts['MetaCoin.sol:MetaCoin'].interface);
+abiDecoder.addABI(abi2);
+
+web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+
+let gasEstimate = web3.eth.estimateGas({data: bytecode});
+let MetaC = web3.eth.contract(JSON.parse(abi));
+
+finale = web3.eth.getTransaction('0xc8cbab4d6af3d241d160d888c061e6fa4cda56b83454cfe17a2449c345f14aca')
+abiDecoder.decodeMethod(finale.input);
+
+
+
+
+
+
+
+
+
+
+
+
+
+

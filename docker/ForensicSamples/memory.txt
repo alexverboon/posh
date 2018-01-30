@@ -1,0 +1,9 @@
+﻿
+
+# Launch Docker remnux with PeScanner Tool
+docker run --rm -it -v c:/temp/mem:/PEFiles remnux/volatility  bash
+
+# https://github.com/hiddenillusion/AnalyzePE
+
+
+
