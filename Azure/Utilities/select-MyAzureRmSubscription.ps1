@@ -22,8 +22,8 @@ VERBOSE: Setting Azure Context to Visual Studio Professional with MSDN
 
 Environment           : AzureCloud
 Account               : user1@outlook.com
-TenantId              : f2108ecc-dd4a-4b24-9f58-8b309a9a9a09
-SubscriptionId        : 46327b72-b63c-48dd-b7f9-8f9031a876f2
+TenantId              : f2108ecc-dd4a-4b24-9f58-aaaaaaaaaaaa
+SubscriptionId        : 46327b72-b63c-48dd-b7f9-aaaaaaaaaaaa
 SubscriptionName      : Visual Studio Professional with MSDN
 CurrentStorageAccount : 
 
