@@ -1,12 +1,29 @@
+﻿
 Function Invoke-CISCat {
+
 <#
 .SYNOPSIS
-    Invoke-CISCAT triggers Configuration and Vulnerability Assessments
+    Invoke-CISCAT triggers CIS-CAT Pro actions
+
 .DESCRIPTION
-    Invoke-CISCAT triggers Configuration and Vulnerability Assessments
+    Invoke-CISCAT triggers CIS-CAT Pro actions
+    - Benchmark Assesment
+    - Vulnerabiity Assessment
+    - Vulnerabiity definitinon updates
+
 .PARAMETER Action 
     Defines whether the the cmdlet invokes CIS-CAT to run a Configuration Baseline
     or Vulnerability Assessment or uupdate the Vulnerability definitions
+
+.PARAMETER Benchmark
+    The name of the CIS Benchmark to use for the Assessment. 
+
+.PARAMETER CISCATPATH
+    The root folder where the CIS-CAT Toolkit is stored. 
+
+.PARAMETER DebugLog
+    When enabled, the cis-cat console output is stored to a log file. 
+
 .EXAMPLE
     Invoke-CISCat -Action ConfigBaseline -CISCATPath C:\TEMP\CISCAT -Benchmark 'Windows 10' -Verbose
 
@@ -27,15 +44,18 @@ Function Invoke-CISCat {
 .NOTES
     version 1.1, 05.02.2018, alex verboon
 
+
 .LINK
     https://oval.cisecurity.org
     https://www.cisecurity.org/cis-benchmarks/
 #>
+
     [CmdletBinding()]
     Param (        
         [Parameter(Mandatory=$true,Position=1)]
         [ValidateSet('ConfigBaseline','ScanVulnerabilities',"UpdateVulnerabilityDefinitions")]       
         [string]$Action,
+
 
         [Parameter(Mandatory=$true,Position=2)]
         [ValidateScript(
@@ -50,7 +70,11 @@ Function Invoke-CISCat {
                 Throw "Unable to find $_\cis-cat-full\CISCAT.jar." 
             }
         })]
-        [string]$CISCATPath
+        [string]$CISCATPath,
+
+        [Parameter(Mandatory=$false,Position=3)]
+        [switch]$DebugLog
+
     )     
 
   DynamicParam {
@@ -58,13 +82,13 @@ Function Invoke-CISCat {
         {
             # Set the dynamic parameters' name
             $ParameterName = 'Benchmark'
-            
+
             # Create the dictionary 
             $RuntimeParameterDictionary = New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
 
             # Create the collection of attributes
             $AttributeCollection = New-Object System.Collections.ObjectModel.Collection[System.Attribute]
-            
+
             # Create and set the parameters' attributes
             $ParameterAttribute = New-Object System.Management.Automation.ParameterAttribute
             $ParameterAttribute.Mandatory = $true
@@ -88,26 +112,36 @@ Function Invoke-CISCat {
     }
 
 Begin {
-
-    $DebugMode = 0
-    If ($PSBoundParameters.Keys -contains "Verbose")
-    {
-        write-verbose "verbose enabled"
-        $DebugMode=1
-    }
-    
-    # random part of filename for log file     
-    $RandomName = (([GUID]::NewGuid()).guid)
-
+    # The root folder that contains the CIS-CAT Toolkit content
     $BaseDir = $CISCATPath
+    # The location of the CIS-CAT Toolkit application 
     $CISCATAppPath = "$BaseDir\cis-cat-full"
-    $DebugLogFile = "$BaseDir\cis-debug-log_$RandomName.log"
+
+    # Location of the Java executable
     $JavaExePath = "$BaseDir\java\jre32\bin\java.exe"
-    $JavaMaxMemory = 1028
+    # Java Memory max heap size
+    $JavaMaxMemory = 1028 #Xmx1028M
+    # Java memory initial heap size
+    $JavaInitMemory = 512 #Xms512m 
+    # CIS Report output format options
     $cis_options = "-x -t -csv"
 
 
+    $DebugMode = 0
+    If ($PSBoundParameters.Keys -contains "DebugLog")
+    {
+            write-output "DebugLog enabled"
+            # random part of filename for log file     
+            $RandomName = (([GUID]::NewGuid()).guid)
+            # random debug file name
+            $DebugLogFile = "$BaseDir\cis-debug-log_$RandomName.log"
+            $DebugMode=1
+            Write-output "CIS-CAT execution results are stored in $BaseDir\cis-debug-log_$RandomName.log"
+    }
+
+
     <#
+
         CIS-CAT Tool command line options
         # -a = accept terms
         # -aa = auto assessment
@@ -129,12 +163,8 @@ Begin {
         # -vac = same as above but outputs CSV
         # -vs = verify benchmark are valid
         # -y = show all tests
-
-
     #>
 
-
-   
         If (Test-Path "$CISCATPath\Reports")
         {
             Write-Verbose "$CISCATPath\Reports folder already exists"
@@ -145,15 +175,11 @@ Begin {
             New-Item -Path "$CISCATPath\Reports" -ItemType Directory -Force | Out-Null
         }
 
-
     # Configuration Baseline
     Write-Verbose "CIS-CAT Action: $Action"
-
     If ($Action -eq "ConfigBaseline")
     {
         Write-Verbose "Selected Benchmark $($PSBoundParameters["BenchMark"])"
-
-
         If ($PSBoundParameters["BenchMark"] -eq "Windows 10")
         {
             $BenchMarkName = "CIS_Microsoft_Windows_10_Enterprise_Release_1703_Benchmark_v1.3.0-xccdf.xml"
@@ -189,14 +215,12 @@ Begin {
             $BenchmarkName = "CIS_Microsoft_Office_Word_2016_Benchmark_v1.1.0-xccdf.xml"
             $BenchMarkProfile = "xccdf_org.cisecurity.benchmarks_profile_Level_1"
         }
-        
         Elseif ($PSBoundParameters["BenchMark"] -eq "Google Chrome")
         {
             $BenchmarkName = "CIS_Google_Chrome_Benchmark_v1.2.0-xccdf.xml"
             #$BenchMarkProfile = "xccdf_org.cisecurity.benchmarks_profile_Level_1"
             $BenchMarkProfile = "xccdf_org.cisecurity.benchmarks_profile_Level_2"
         }
-        
         Elseif ($PSBoundParameters["BenchMark"] -eq "Mozilla FireFox 38 ESR")
         {
             $BenchmarkName = "CIS_Google_Chrome_Benchmark_v1.2.0-xccdf.xml"
@@ -207,32 +231,33 @@ Begin {
         {
             Throw "Unknown Benchmark specified"
         }
+
+        # CIS CAT Commandline to run Benchmark Assessment
         $cmdline = @("-Xmx$JavaMaxMemory`M -jar $CISCATAppPath\ciscat.jar -a -s -y $cis_options -b $CISCATAppPath\Benchmarks\$BenchmarkName -p $BenchMarkProfile -r $CISCATPath\Reports")
-   
     }
+
     Elseif ($Action -eq "ScanVulnerabilities")
     {
+        # CIS CAT commandline to run Vulnerability Assessment
         $cmdline = @("-Xmx$JavaMaxMemory`M -jar $CISCATAppPath\ciscat.jar -a -s -y $cis_options -va -r $CISCATPath\Reports")
     }
     Elseif ($Action -eq "UpdateVulnerabilityDefinitions")
     {
+        # CIS CAT commandline to update Vulnerability Assessment definitions
         $cmdline = @("-Xmx$JavaMaxMemory`M -jar $CISCATAppPath\ciscat.jar -a -s -up")
     }
-
     Else
     {
-        Write-Error "No Action Defined!"
+        Write-Error "Unknown Action Defined!"
         Throw
     }
 }
-
 
 Process {
         If ($Action -eq "ConfigBaseline" -or $Action -eq "ScanVulnerabilities" -or $Action -eq "UpdateVulnerabilityDefinitions")
         {
             Write-Verbose "Java: $JavaExePath"
             Write-Verbose "cmdline: $cmdline"
-
             $result = $null
             $log = $null
             $psi = New-object System.Diagnostics.ProcessStartInfo 
@@ -259,14 +284,11 @@ Process {
             while (!$process.HasExited)
         }
 }
-  
 
 End {
-
     If ($log -like "*ERR-CLI*")
     {
         $CIS_Error = ($log.Split(":").TrimStart()[1])
-
         switch($CIS_Error)
         {
             "ERR-CLI-0002" {$CIS_err_msg = "An unrecognized Command-Line option was entered. Use -h to list all available CommandLine options"} 
@@ -308,12 +330,11 @@ End {
     {
         write-output "CIS-CAT Processing completed"
     }
-
     If ($DebugMode -eq 1)
     {
-        $Result | out-file $DebugLogFile
+        $Result | out-file -FilePath "$DebugLogFile" -Force
+        Write-Output "Saving execution resutls to $DebugLogFile"
     }
-
  }
 }
 

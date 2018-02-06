@@ -3,9 +3,7 @@
 .SYNOPSIS
     Update-CISVulnDefinitions
 .DESCRIPTION
-    Update-CISVulnDefinitions downloads the Windows 7 and Windows 10
-    vulnerability definitions. This is an alternative method instead of
-    using the CISCAT -upo option. 
+    Update-CISVulnDefinitions
 .PARAMETER Path
     The location where Windows Vulnerability definitions are stored locally.  
 .EXAMPLE
@@ -20,8 +18,9 @@
         [Parameter(Mandatory=$true,Position=1)]
         [string]$Path)
 Begin {
-    #https://www.ssllabs.com/ssltest/analyze.html?d=www.verboon.info&latest
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+     #https://www.ssllabs.com/ssltest/analyze.html?d=www.verboon.info&latest
+     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
     $WinVulnDefUri = "https://oval.cisecurity.org/repository/download/5.10/vulnerability/"
     $CIS_VulnDef_Dir="cis-cat-full\third-party-content\org.mitre.oval"
@@ -35,7 +34,7 @@ Begin {
 }
 
 Process {
-    $WinVulnDefUriContent = Invoke-WebRequest -Uri $WinVulnDefUri -UseDefaultCredentials
+    $WinVulnDefUriContent = Invoke-WebRequest -Uri $WinVulnDefUri
     $Downloadlinks = ($WinVulnDefUriContent.Links | Select-Object href | Where-Object {$_.href -like "*Microsoft_windows_10.xml" -or $_.href -like "*Microsoft_Windows_7.xml"}).href
 
     ForEach($osuri in $downloadlinks)
@@ -62,7 +61,7 @@ Process {
     {
         Write-Verbose "File: $($checkfile.FullName)"
         [xml]$vuldeffile = Get-Content -Path "$($checkfile.FullName)" 
-        $xmlnodes = ($vuldeffile.oval_definitions.ChildNodes | Select-object Name).Name
+        $xmlnodes = ($vuldeffile.oval_definitions.ChildNodes | Select Name).Name
         $checkovalschema = Compare-Object -ReferenceObject $oval_requirednodes -DifferenceObject $xmlnodes
         If ($check -ne $null )
         {
