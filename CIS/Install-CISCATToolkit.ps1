@@ -38,7 +38,6 @@ Function Install-CISCATToolkit{
 Process{
     Try{
         # Pointer to latest CIS-CAT Toolit Bundle, adjust location
-    
         $CISBundleZip = "https://<location to cis-cat-dissolvable.zip goes here>"
         Write-Output "Locating CIS-CAT Toolkit source: $CISBundleZip"
 
