@@ -58,7 +58,7 @@
 [CmdletBinding()]
 Param(
 
-    [Parameter(ParameterSetName="ConnectionStateState")]
+    [Parameter()]
     [ValidateSet("Closed","CloseWait","Closing","DeleteTCB","Established","FinWait1","FinWait2","LastAck","Listen","SynReceived","SynSent","TimeWait")]
     [string]$State,
 
@@ -140,7 +140,7 @@ Begin{
         If (-not ($PSBoundParameters.Keys -contains "Process"))
         {
             Write-Verbose "Retrieving NetTCPConnection data for all processes"
-            $allconnecctions = Get-NetTCPConnection | Select-Object * | Where-Object  {$_.state -match "$regex_state"}
+            $allconnecctions = Get-NetTCPConnection | Select-Object *  #| Where-Object  {$_.state -match "$regex_state"}
         } 
         Else
         {
