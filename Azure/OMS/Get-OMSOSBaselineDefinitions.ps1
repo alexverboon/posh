@@ -60,36 +60,44 @@ Begin{
 }
 
 Process{
-    $blfile = "$($PSBoundParameters["Baseline"])"
     $Result = @()
+    $Rules = @("BaselineRegistryRule","BaselineAuditPolicyRule","BaselineSecurityPolicyRule")
+    ForEach ($RuleType in $Rules)
+    {
+                write-verbose "Processing Rule: $RuleType"
+                $blfile = "$($PSBoundParameters["Baseline"])"
 
-    write-host "$($blfile.name)"
-    If (-not ($blfile.name -eq "WebBaseLineRules.xml"))
-    {
-        $Baselines = Select-xml -Path $blfile -XPath "//BaselineRegistryRule"
-    }
-    Elseif ($blfile.Name -eq "WebBaseLineRules.xml")
-    {
-        $Baselines = Select-xml -Path $blfile -XPath "//WebBaselineRule"
-    }
 
-    ForEach ($BRule in $baselines.node)
-    {
-        $object = [ordered] @{
-        BaselineFile = $blfile
-        BaselineId  = $BRule.BaselineId     
-        Id = $BRule.Id         
-        OriginalId = $BRule.OriginalId   
-        CceId = $BRule.CceId
-        Name = $BRule.Name
-        Type = $BRule.Type
-        ExpectedValue = $BRule.ExpectedValue
-        Severity = $BRule.Severity
-        AnalyzeOperation = $BRule.AnalyzeOperation
-        Enabled = $BRule.Enabled
-        AuditPolicyId = $BRule.AuditPolicyId
-        }
-        $Result += (New-Object -TypeName PSOBJECT -Property $object)
+                write-host "$($blfile.name)"
+                If (-not ($blfile.name -eq "WebBaseLineRules.xml"))
+                {
+                    $Baselines = Select-xml -Path $blfile -XPath "//$RuleType"
+                }
+                Elseif ($blfile.Name -eq "WebBaseLineRules.xml")
+                {
+                    $Baselines = Select-xml -Path $blfile -XPath "//WebBaselineRule"
+                    $RuleType = "WebBaselineRule"
+                }
+
+                ForEach ($BRule in $baselines.node)
+                {
+                    $object = [ordered] @{
+                    BaselineFile = $blfile
+                    RuleType = $RuleType
+                    BaselineId  = $BRule.BaselineId     
+                    Id = $BRule.Id         
+                    OriginalId = $BRule.OriginalId   
+                    CceId = $BRule.CceId
+                    Name = $BRule.Name
+                    Type = $BRule.Type
+                    ExpectedValue = $BRule.ExpectedValue
+                    Severity = $BRule.Severity
+                    AnalyzeOperation = $BRule.AnalyzeOperation
+                    Enabled = $BRule.Enabled
+                    AuditPolicyId = $BRule.AuditPolicyId
+                    }
+                    $Result += (New-Object -TypeName PSOBJECT -Property $object)
+                }
     }
 }
 
