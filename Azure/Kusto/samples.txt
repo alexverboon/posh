@@ -1,0 +1,16 @@
+
+browserTimings 
+| project client_Browser, client_OS , client_City
+
+browserTimings 
+| where timestamp > ago(7d) 
+| summarize count() by client_City
+| render barchart 
+
+https://portal.loganalytics.io/demo#/discover/home
+https://analytics.applicationinsights.io/demo#/discover/query/results/table
+
+
+
+
+
