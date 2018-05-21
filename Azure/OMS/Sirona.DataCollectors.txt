@@ -1,0 +1,410 @@
+
+Microsoft.Sirona.DataCollectors.dll
+resources
+
+<?xml version="1.0" encoding="utf-8"?>
+<IPConfiguration Version="2.0">
+  <Mappings>
+    <RegisterMapping ID="9f3de522-646c-4eff-a064-123f175e1508" Name="Win32_LogicalDisk_Access" Object="Win32_LogicalDisk" Column="Access" MappingType="Access" />
+    <RegisterMapping ID="2f2be615-87b4-4b2b-bbf7-9a04d3df23c5" Name="Win32_LogicalDisk_ConfigManagerErrorCode" Object="Win32_LogicalDisk" Column="ConfigManagerErrorCode" MappingType="ConfigManagerErrorCode" />
+    <RegisterMapping ID="1e22d6f8-0af6-4167-94e0-1c0aca460f07" Name="Win32_LogicalDisk_Availability" Object="Win32_LogicalDisk" Column="Availability" MappingType="Availability" />
+    <RegisterMapping ID="ce25cb49-308a-4ca3-99ed-4a8a69e5b15a" Name="Win32_LogicalDisk_DriveType" Object="Win32_LogicalDisk" Column="DriveType" MappingType="DriveType" />
+    <RegisterMapping ID="4900bfea-1676-4890-b9d9-eebd1c4d6651" Name="Win32_LogicalDisk_StatusInfo" Object="Win32_LogicalDisk" Column="StatusInfo" MappingType="StatusInfo" />
+    <RegisterMapping ID="28ef1d4c-d23f-4b78-bc62-18f0f371560d" Name="Win32_LogicalDisk_PowerManagementCapabilities" Object="Win32_LogicalDisk" Column="PowerManagementCapabilities" MappingType="PowerManagementCapabilities" />
+    <RegisterMapping ID="2d5d4982-a6a4-4206-948f-0eb37b8d3a2c" Name="Win32_Processor_StatusInfo" Object="Win32_Processor" Column="StatusInfo" MappingType="StatusInfo" />
+    <RegisterMapping ID="329ab304-0d2f-469c-827a-9fca2f931c64" Name="Win32_Processor_PowerManagementCapabilities" Object="Win32_Processor" Column="PowerManagementCapabilities" MappingType="PowerManagementCapabilities" />
+    <RegisterMapping ID="44bdf5cc-c25e-4737-9e38-8e086d1c5f8d" Name="Win32_Processor_UpgradeMethod" Object="Win32_Processor" Column="UpgradeMethod" MappingType="UpgradeMethod" />
+    <RegisterMapping ID="27db3bd2-ea43-4e40-a21d-20e7d2d0ac6f" Name="Win32_Processor_VoltageCaps" Object="Win32_Processor" Column="VoltageCaps" MappingType="VoltageCaps" />
+    <RegisterMapping ID="e71a6fbe-909c-4fa2-a530-01a750df117b" Name="Win32_Processor_ProcessorType" Object="Win32_Processor" Column="ProcessorType" MappingType="ProcessorType" />
+    <RegisterMapping ID="5eb75d6a-2d5a-4e0a-80d2-da835e840531" Name="Win32_Processor_CpuStatus" Object="Win32_Processor" Column="CpuStatus" MappingType="CpuStatus" />
+    <RegisterMapping ID="95317dae-1b50-4816-bdb1-9e2e037c8657" Name="Win32_Processor_ConfigManagerErrorCode" Object="Win32_Processor" Column="ConfigManagerErrorCode" MappingType="ConfigManagerErrorCode" />
+    <RegisterMapping ID="83ce8a6d-89b0-43bd-958d-12bac2390483" Name="Win32_Processor_Architecture" Object="Win32_Processor" Column="Architecture" MappingType="Architecture" />
+    <RegisterMapping ID="3b71c490-d8ca-49ed-8666-7e8535eef5fd" Name="Win32_Processor_Availability" Object="Win32_Processor" Column="Availability" MappingType="Availability" />
+    <RegisterMapping ID="3c3de546-e7c6-44ef-a995-7d1479746519" Name="Win32_ComputerSystem_AdminPasswordStatus" Object="Win32_ComputerSystem" Column="AdminPasswordStatus" MappingType="Status" />
+    <RegisterMapping ID="8b5035d2-5636-4d17-8013-c050f5f6f710" Name="Win32_ComputerSystem_BootOptionOnLimit" Object="Win32_ComputerSystem" Column="BootOptionOnLimit" MappingType="BootOption" />
+    <RegisterMapping ID="5fc083a3-c54d-426e-a1f9-6fb891c577f0" Name="Win32_ComputerSystem_BootOptionOnWatchDog" Object="Win32_ComputerSystem" Column="BootOptionOnWatchDog" MappingType="BootOption" />
+    <RegisterMapping ID="2eded40a-7bab-428f-8246-e25f7b244578" Name="Win32_ComputerSystem_ChassisBootupState" Object="Win32_ComputerSystem" Column="ChassisBootupState" MappingType="ChassisBootupState" />
+    <RegisterMapping ID="8b10971d-570e-4fd5-b48f-3147651b3444" Name="Win32_ComputerSystem_DomainRole" Object="Win32_ComputerSystem" Column="DomainRole" MappingType="DomainRole" />
+    <RegisterMapping ID="15ad5171-9e6f-4091-91e6-0ba7795d1956" Name="Win32_ComputerSystem_FrontPanelResetStatus" Object="Win32_ComputerSystem" Column="FrontPanelResetStatus" MappingType="StatusZeroBased" />
+    <RegisterMapping ID="fd1bcc41-c3a6-44b8-963a-0fb3d6913e5b" Name="Win32_ComputerSystem_KeyboardPasswordStatus" Object="Win32_ComputerSystem" Column="KeyboardPasswordStatus" MappingType="StatusZeroBased" />
+    <RegisterMapping ID="a99a29fb-e4d8-44ce-9cba-3cca30f47274" Name="Win32_ComputerSystem_PowerOnPasswordStatus" Object="Win32_ComputerSystem" Column="PowerOnPasswordStatus" MappingType="StatusZeroBased" />
+    <RegisterMapping ID="3566f7e1-aa9a-4425-b187-73ab703c9ab0" Name="Win32_ComputerSystem_PCSystemType" Object="Win32_ComputerSystem" Column="PCSystemType" MappingType="PCSystemType" />
+    <RegisterMapping ID="465f4739-4b89-4e34-8eb7-b5a33c4d14b7" Name="Win32_ComputerSystem_WakeUpType" Object="Win32_ComputerSystem" Column="WakeUpType" MappingType="WakeUpType" />
+    <RegisterMapping ID="6d9bb731-c14f-4f98-ba1b-ccab01e19c65" Name="Win32_ComputerSystem_ThermalState" Object="Win32_ComputerSystem" Column="ThermalState" MappingType="ThermalState" />
+    <RegisterMapping ID="09338317-b272-4a85-85f9-8996aef51c1f" Name="Win32_ComputerSystem_PowerSupplyState" Object="Win32_ComputerSystem" Column="PowerSupplyState" MappingType="PowerSupplyState" />
+    <RegisterMapping ID="8422a109-96e2-42e3-baa1-836d8fb5ce50" Name="Win32_ComputerSystem_ResetCapability" Object="Win32_ComputerSystem" Column="ResetCapability" MappingType="ResetCapability" />
+    <RegisterMapping ID="96a8121d-e818-4e67-8487-42b7c5ac1d80" Name="Win32_ComputerSystem_PowerManagementCapabilities" Object="Win32_ComputerSystem" Column="PowerManagementCapabilities" MappingType="PowerManagementCapabilities" />
+    <RegisterMapping ID="cc7a9d22-bbce-438d-8cc4-f86d9a9e6674" Name="Win32_OperatingSystem_SuiteMask" Object="Win32_OperatingSystem" Column="SuiteMask" MappingType="SuiteMask" />
+    <RegisterMapping ID="aed9f658-4d62-474e-8009-79c0b2f58ca3" Name="Win32_OperatingSystem_ProductType" Object="Win32_OperatingSystem" Column="ProductType" MappingType="ProductType" />
+    <RegisterMapping ID="0995b685-0961-4496-92d1-315c946f93bb" Name="Win32_OperatingSystem_ForegroundApplicationBoost" Object="Win32_OperatingSystem" Column="ForegroundApplicationBoost" MappingType="ForegroundApplicationBoost" />
+    <RegisterMapping ID="a40a0472-771d-4f6f-8da3-229b874da0f2" Name="Win32_OperatingSystem_LargeSystemCache" Object="Win32_OperatingSystem" Column="LargeSystemCache" MappingType="ForegroundApplicationBoost" />
+    <RegisterMapping ID="fbaca23b-0455-465f-9bf9-61a5d0cc165d" Name="Win32_OperatingSystem_DataExecutionPrevention_SupportPolicy" Object="Win32_OperatingSystem" Column="DataExecutionPrevention_SupportPolicy" MappingType="DataExecutionPrevention" />
+    <RegisterMapping ID="d0b5078b-7bb9-4adc-9782-a7eff9a51712" Name="Win32_OperatingSystem_OperatingSystemSKU" Object="Win32_OperatingSystem" Column="OperatingSystemSKU" MappingType="OperatingSystemSKU" />
+    <RegisterMapping ID="513e7ca2-0e1b-465a-be1e-c7a54fd42ea6" Name="Win32_OperatingSystem_OSType" Object="Win32_OperatingSystem" Column="OSType" MappingType="OperatingSystemType" />
+    <RegisterMapping ID="3F9CC725-18D8-48E9-9FB7-2FA3890D9C54" Name="Win32_OperatingSystem_OSProductSuite" Object="Win32_OperatingSystem" Column="OSProductSuite" MappingType="OperatingSystemProductSuite" />
+  </Mappings>
+  <MappingTypes>
+    <RegisterMappingType ID="cf03c0a3-ab44-4186-b0a9-41a232a93b61" Name="Access" MappingType="Enum">
+      <Value Index="0" Meaning="Unknown" />
+      <Value Index="1" Meaning="Readable" />
+      <Value Index="2" Meaning="Writable" />
+      <Value Index="3" Meaning="Read/Write Supported" />
+      <Value Index="4" Meaning="Write Once" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="206eb262-0a04-43eb-b8fe-bca21e1c19b6" Name="ConfigManagerErrorCode" MappingType="Enum">
+      <Value Index="0" Meaning="Device is working properly." />
+      <Value Index="1" Meaning="Device is not configured correctly." />
+      <Value Index="2" Meaning="Windows cannot load the driver for this device." />
+      <Value Index="3" Meaning="Driver for this device might be corrupted, or the system may be low on memory or other resources." />
+      <Value Index="4" Meaning="Device is not working properly. One of its drivers or the registry might be corrupted." />
+      <Value Index="5" Meaning="Driver for the device requires a resource that Windows cannot manage." />
+      <Value Index="6" Meaning="Boot configuration for the device conflicts with other devices." />
+      <Value Index="7" Meaning="Cannot filter." />
+      <Value Index="8" Meaning="Driver loader for the device is missing." />
+      <Value Index="9" Meaning="Device is not working properly. The controlling firmware is incorrectly reporting the resources for the device." />
+      <Value Index="10" Meaning="Device cannot start." />
+      <Value Index="11" Meaning="Device failed." />
+      <Value Index="12" Meaning="Device cannot find enough free resources to use." />
+      <Value Index="13" Meaning="Windows cannot verify the device resources." />
+      <Value Index="14" Meaning="Device cannot work properly until the computer is restarted." />
+      <Value Index="15" Meaning="Device is not working properly due to a possible re-enumeration problem." />
+      <Value Index="16" Meaning="Windows cannot identify all of the resources that the device uses." />
+      <Value Index="17" Meaning="Device is requesting an unknown resource type." />
+      <Value Index="18" Meaning="Device drivers must be reinstalled." />
+      <Value Index="19" Meaning="Failure using the VxD loader." />
+      <Value Index="20" Meaning="Registry might be corrupted." />
+      <Value Index="21" Meaning="System failure. If changing the device driver is ineffective, see the hardware documentation. Windows is removing the device." />
+      <Value Index="22" Meaning="Device is disabled." />
+      <Value Index="23" Meaning="System failure. If changing the device driver is ineffective, see the hardware documentation." />
+      <Value Index="24" Meaning="Device is not present, not working properly, or does not have all of its drivers installed." />
+      <Value Index="25" Meaning="Windows is still setting up the device." />
+      <Value Index="26" Meaning="Windows is still setting up the device." />
+      <Value Index="27" Meaning="Device does not have valid log configuration." />
+      <Value Index="28" Meaning="Device drivers are not installed." />
+      <Value Index="29" Meaning="Device is disabled. The device firmware did not provide the required resources." />
+      <Value Index="30" Meaning="Device is using an IRQ resource that another device is using." />
+      <Value Index="31" Meaning="Device is not working properly. Windows cannot load the required device drivers." />
+    </RegisterMappingType>
+    <RegisterMappingType ID="1c4e6919-a336-4c48-9b9b-6dff79a3607b" Name="DriveType" MappingType="Enum">
+      <Value Index="0" Meaning="Unknown" />
+      <Value Index="1" Meaning="No Root Directory" />
+      <Value Index="2" Meaning="Removable Disk" />
+      <Value Index="3" Meaning="Local Disk" />
+      <Value Index="4" Meaning="Network Disk" />
+      <Value Index="5" Meaning="Compact Disk" />
+      <Value Index="6" Meaning="RAM Disk" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="0c751b87-2af4-4afa-9078-6b3a04b52acf" Name="StatusInfo" MappingType="Enum">
+      <Value Index="1" Meaning="Other" />
+      <Value Index="2" Meaning="Unkown" />
+      <Value Index="3" Meaning="Enabled" />
+      <Value Index="4" Meaning="Disabled" />
+      <Value Index="5" Meaning="Not Applicable" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="3f85a0db-6bbd-4e47-892d-948f807ecdcc" Name="Status" MappingType="Enum">
+      <Value Index="1" Meaning="Disabled" />
+      <Value Index="2" Meaning="Enabled" />
+      <Value Index="3" Meaning="Not Implemented" />
+      <Value Index="4" Meaning="Unknown" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="32d111a1-9da8-4b87-a5c5-345dc3c931af" Name="BootOption" MappingType="Enum">
+      <Value Index="1" Meaning="Reserved" />
+      <Value Index="2" Meaning="Operating System" />
+      <Value Index="3" Meaning="System Utilities" />
+      <Value Index="4" Meaning="Do Not Reboot" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="5f302bff-2e08-43b5-8981-64ee495d7254" Name="ChassisBootupState" MappingType="Enum">
+      <Value Index="1" Meaning="Other" />
+      <Value Index="2" Meaning="Unknown" />
+      <Value Index="3" Meaning="Safes" />
+      <Value Index="4" Meaning="Warning" />
+      <Value Index="5" Meaning="Critical" />
+      <Value Index="6" Meaning="Nonrecoverable" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="55727ffa-68e1-4e2a-bc05-a0b645922a95" Name="DomainRole" MappingType="Enum">
+      <Value Index="0" Meaning="Standalone Workstation" />
+      <Value Index="1" Meaning="Member Workstation" />
+      <Value Index="2" Meaning="Standalone Server" />
+      <Value Index="3" Meaning="Member Server" />
+      <Value Index="4" Meaning="Backup Domain Controller" />
+      <Value Index="5" Meaning="Primary Domain Controller" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="cd07153a-2026-4f72-b9c6-a502ea604924" Name="StatusZeroBased" MappingType="Enum">
+      <Value Index="0" Meaning="Disabled" />
+      <Value Index="1" Meaning="Enabled" />
+      <Value Index="2" Meaning="Not Implemented" />
+      <Value Index="3" Meaning="Unknown" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="eee273f6-8a94-40b2-963f-9e5443e55bb5" Name="PCSystemType" MappingType="Enum">
+      <Value Index="0" Meaning="Unspecified" />
+      <Value Index="1" Meaning="Desktop" />
+      <Value Index="2" Meaning="Mobile" />
+      <Value Index="3" Meaning="Workstation" />
+      <Value Index="4" Meaning="Enterprise Server" />
+      <Value Index="5" Meaning="Small Office and Home Office (SOHO) Server" />
+      <Value Index="6" Meaning="Appliance PC" />
+      <Value Index="7" Meaning="Performance Server" />
+      <Value Index="8" Meaning="Maximum" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="adfb3f5a-d864-433b-8328-0c80e9a5a98d" Name="PowerManagementCapabilities" MappingType="Enum">
+      <Value Index="0" Meaning="Unknown" />
+      <Value Index="1" Meaning="Not Supported" />
+      <Value Index="2" Meaning="Disabled" />
+      <Value Index="3" Meaning="Enabled" />
+      <Value Index="4" Meaning="Power Saving Modes Entered Automatically" />
+      <Value Index="5" Meaning="Power State Settable" />
+      <Value Index="6" Meaning="Power Cycling Supported" />
+      <Value Index="7" Meaning="Timed Power-On Supported" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="12b8902e-b514-42f5-bee8-aa612fd9c6f8" Name="PowerState" MappingType="Enum">
+      <Value Index="0" Meaning="Unknown" />
+      <Value Index="1" Meaning="Full Power" />
+      <Value Index="2" Meaning="Power Save - Low Power Mode" />
+      <Value Index="3" Meaning="Power Save - Standby" />
+      <Value Index="4" Meaning="Power Save - Unknown" />
+      <Value Index="5" Meaning="Power Cycle" />
+      <Value Index="6" Meaning="Power Off" />
+      <Value Index="7" Meaning="Power Save - Warning" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="1bf8b14a-1b5d-4043-91a1-db1695189471" Name="PowerSupplyState" MappingType="Enum">
+      <Value Index="1" Meaning="Other" />
+      <Value Index="2" Meaning="Unknown" />
+      <Value Index="3" Meaning="Safe" />
+      <Value Index="4" Meaning="Warning" />
+      <Value Index="5" Meaning="Critical" />
+      <Value Index="6" Meaning="Nonrecoverable" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="73ceb4d8-cb9a-452f-83ea-06cc5ab3dcea" Name="ResetCapability" MappingType="Enum">
+      <Value Index="1" Meaning="Other" />
+      <Value Index="2" Meaning="Unknown" />
+      <Value Index="3" Meaning="Disabled" />
+      <Value Index="4" Meaning="Enabled" />
+      <Value Index="5" Meaning="Nonrecoverable" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="80e5d7b9-dc50-46fe-9e68-9cc59d6e9a84" Name="ThermalState" MappingType="Enum">
+      <Value Index="1" Meaning="Other" />
+      <Value Index="2" Meaning="Unknown" />
+      <Value Index="3" Meaning="Safe" />
+      <Value Index="4" Meaning="Warning" />
+      <Value Index="5" Meaning="Critical" />
+      <Value Index="6" Meaning="Nonrecoverable" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="057b3080-e924-45a8-857d-161877160bf0" Name="WakeUpType" MappingType="Enum">
+      <Value Index="0" Meaning="Reserved" />
+      <Value Index="1" Meaning="Other" />
+      <Value Index="2" Meaning="Unknown" />
+      <Value Index="3" Meaning="APM Timer" />
+      <Value Index="4" Meaning="Modem Ring" />
+      <Value Index="5" Meaning="LAN Remote" />
+      <Value Index="6" Meaning="Power Switch" />
+      <Value Index="7" Meaning="PCI PME#" />
+      <Value Index="8" Meaning="AC Power Restored" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="4c5dc3c7-671e-4f04-89a3-723f3f6dd02a" Name="DataExecutionPrevention" MappingType="Enum">
+      <Value Index="0" Meaning="Always Off" />
+      <Value Index="1" Meaning="Always On" />
+      <Value Index="2" Meaning="Opt In" />
+      <Value Index="3" Meaning="Opt Out" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="58106cfd-aa6f-4c5d-b19d-9a41200ade9f" Name="ForegroundApplicationBoost" MappingType="Enum">
+      <Value Index="0" Meaning="None" />
+      <Value Index="1" Meaning="Minimum" />
+      <Value Index="2" Meaning="Maximum" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="f40efc2f-79e5-428e-8e93-dbecf67ffd58" Name="LargeSystemCache" MappingType="Enum">
+      <Value Index="0" Meaning="Optimize memory for applications" />
+      <Value Index="1" Meaning="Optimize memory for system performance" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="1b692baa-7220-475e-864a-aa170a6c2343" Name="OperatingSystemSKU" MappingType="Enum">
+      <Value Index="0" Meaning="Undefined" />
+      <Value Index="1" Meaning="Ultimate Edition" />
+      <Value Index="2" Meaning="Home Basic Edition" />
+      <Value Index="3" Meaning="Home Premium Edition" />
+      <Value Index="4" Meaning="Enterprise Edition" />
+      <Value Index="5" Meaning="Home Basic N Edition" />
+      <Value Index="6" Meaning="Business Edition" />
+      <Value Index="7" Meaning="Standard Server Edition" />
+      <Value Index="8" Meaning="Datacenter Server Edition" />
+      <Value Index="9" Meaning="Small Business Server Edition" />
+      <Value Index="10" Meaning="Enterprise Server Edition" />
+      <Value Index="11" Meaning="Starter Edition" />
+      <Value Index="12" Meaning="Datacenter Server Core Edition" />
+      <Value Index="13" Meaning="Standard Server Core Edition" />
+      <Value Index="14" Meaning="Enterprise Server Core Edition" />
+      <Value Index="15" Meaning="Enterprise Server Edition for Itanium-Based Systems" />
+      <Value Index="16" Meaning="Business N Edition" />
+      <Value Index="17" Meaning="Web Server Edition" />
+      <Value Index="18" Meaning="Cluster Server Edition" />
+      <Value Index="19" Meaning="Home Server Edition" />
+      <Value Index="20" Meaning="Storage Express Server Edition" />
+      <Value Index="21" Meaning="Storage Standard Server Edition" />
+      <Value Index="22" Meaning="Storage Workgroup Server Edition" />
+      <Value Index="23" Meaning="Storage Entriprise Server Edition" />
+      <Value Index="24" Meaning="Server For Small Business Edition" />
+      <Value Index="25" Meaning="Small Business Server Premium Edition" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="79102F4A-0053-4894-BE76-96AEDF298D0F" Name="OperatingSystemProductSuite" MappingType="Bitmask">
+      <Value Index="1" Meaning="Microsoft Small Business Server was once installed, but may have been upgraded to another version of Windows." />
+      <Value Index="2" Meaning="Windows Server 2008 Enterprise, Windows Server 2003, Enterprise Edition, Windows 2000 Advanced Server, or Windows NT Server 4.0 Enterprise Edition is installed." />
+      <Value Index="4" Meaning="Windows BackOffice components are installed." />
+      <Value Index="8" Meaning="Communication Server is installed." />
+      <Value Index="16" Meaning="Terminal Services is installed." />
+      <Value Index="32" Meaning="Microsoft Small Business Server is installed with the restrictive client license." />
+      <Value Index="64" Meaning="Windows XP Embedded is installed." />
+      <Value Index="128" Meaning="Windows Server 2008 Datacenter, Windows Server 2003, Datacenter Edition, or Windows 2000 Datacenter Server is installed." />
+      <Value Index="256" Meaning="Terminal Services is installed, but only one interactive session is supported." />
+      <Value Index="512" Meaning="Windows XP Home Edition is installed. " />
+      <Value Index="1024" Meaning="Windows Server 2003, Web Edition is installed. " />
+      <Value Index="8192" Meaning="Windows Storage Server 2003 R2 is installed." />
+      <Value Index="16384" Meaning="Windows Server 2003, Compute Cluster Edition is installed. " />
+    </RegisterMappingType>
+    <RegisterMappingType ID="e747af87-5eca-46f6-a075-78457dc95b16" Name="ProductType" MappingType="Enum">
+      <Value Index="1" Meaning="Work Station" />
+      <Value Index="2" Meaning="Domain Controller" />
+      <Value Index="3" Meaning="Server" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="232b9e6d-ada7-4c54-b3fd-3ffcfef90f98" Name="SuiteMask" MappingType="Bitmask">
+      <Value Index="1" Meaning="Small Business" />
+      <Value Index="2" Meaning="Enterprise" />
+      <Value Index="4" Meaning="BackOffice" />
+      <Value Index="8" Meaning="Communications" />
+      <Value Index="16" Meaning="Terminal" />
+      <Value Index="32" Meaning="Small Business Restricted" />
+      <Value Index="64" Meaning="Embedded NT" />
+      <Value Index="128" Meaning="Data Center" />
+      <Value Index="256" Meaning="Single User" />
+      <Value Index="512" Meaning="Personal" />
+      <Value Index="1024" Meaning="Blade" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="eac7f6ed-4063-4828-b6f9-f06cca3e407b" Name="Architecture" MappingType="Enum">
+      <Value Index="0" Meaning="x86" />
+      <Value Index="1" Meaning="MIPS" />
+      <Value Index="2" Meaning="Alpha" />
+      <Value Index="3" Meaning="PowerPC" />
+      <Value Index="6" Meaning="ia64" />
+      <Value Index="9" Meaning="x64" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="e2545133-ca47-44a9-bf1d-a1968849f842" Name="Availability" MappingType="Enum">
+      <Value Index="1" Meaning="Other" />
+      <Value Index="2" Meaning="Unkown" />
+      <Value Index="3" Meaning="Running or Full Power" />
+      <Value Index="4" Meaning="Warning" />
+      <Value Index="5" Meaning="In Test" />
+      <Value Index="6" Meaning="Not Applicable" />
+      <Value Index="7" Meaning="Power Off" />
+      <Value Index="8" Meaning="Offline" />
+      <Value Index="9" Meaning="Off Duty" />
+      <Value Index="10" Meaning="Degraded" />
+      <Value Index="11" Meaning="Not Installed" />
+      <Value Index="12" Meaning="Install Error" />
+      <Value Index="13" Meaning="Power Save - Unknown" />
+      <Value Index="14" Meaning="Power Save - Low Power Mode" />
+      <Value Index="15" Meaning="Power Save - Standby" />
+      <Value Index="16" Meaning="Power Cycle" />
+      <Value Index="17" Meaning="Power Save - Warning" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="0ab3c8d6-73d2-458f-8559-fe7489b5316f" Name="CpuStatus" MappingType="Enum">
+      <Value Index="0" Meaning="Unknown" />
+      <Value Index="1" Meaning="CPU Enabled" />
+      <Value Index="2" Meaning="CPU Disabled (BIOS)" />
+      <Value Index="3" Meaning="CPU Disabled (Post Error)" />
+      <Value Index="4" Meaning="CPU Is Idle" />
+      <Value Index="5" Meaning="Reserved" />
+      <Value Index="6" Meaning="Reserved" />
+      <Value Index="7" Meaning="Other" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="08d68836-2e53-4912-bb13-b4113e2b42f1" Name="ProcessorType" MappingType="Enum">
+      <Value Index="1" Meaning="Other" />
+      <Value Index="2" Meaning="Unknown" />
+      <Value Index="3" Meaning="Central Processor" />
+      <Value Index="4" Meaning="Math Processor" />
+      <Value Index="5" Meaning="DSP Processor" />
+      <Value Index="6" Meaning="Video Processor" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="4d765b48-694b-4904-952a-074fdf3b23fd" Name="UpgradeMethod" MappingType="Enum">
+      <Value Index="1" Meaning="Other" />
+      <Value Index="2" Meaning="Unknown" />
+      <Value Index="3" Meaning="Daughter Board" />
+      <Value Index="4" Meaning="ZIF Socket" />
+      <Value Index="5" Meaning="Replacement or Piggy Back" />
+      <Value Index="6" Meaning="None" />
+      <Value Index="7" Meaning="LIF Socket" />
+      <Value Index="8" Meaning="Slot 1" />
+      <Value Index="9" Meaning="Slot 2" />
+      <Value Index="10" Meaning="370 Pin Socket" />
+      <Value Index="11" Meaning="Slot A" />
+      <Value Index="12" Meaning="Slot M" />
+      <Value Index="13" Meaning="Socket 423" />
+      <Value Index="14" Meaning="Socket A (462)" />
+      <Value Index="15" Meaning="Socket 478" />
+      <Value Index="16" Meaning="Socket 754" />
+      <Value Index="17" Meaning="Socket 940" />
+      <Value Index="18" Meaning="Socket 939" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="32cc0f47-979e-411e-b445-bc81331637a5" Name="VoltageCaps" MappingType="Bitmask">
+      <Value Index="1" Meaning="5 volts" />
+      <Value Index="2" Meaning="3.3 volts" />
+      <Value Index="4" Meaning="2.9 volts" />
+    </RegisterMappingType>
+    <RegisterMappingType ID="c3671607-98db-46a7-918f-6e89ef4178c9" Name="OperatingSystemType" MappingType="Enum">
+      <Value Index="0" Meaning="Unknown" />
+      <Value Index="1" Meaning="Other" />
+      <Value Index="2" Meaning="MACROS" />
+      <Value Index="3" Meaning="ATTUNIX" />
+      <Value Index="4" Meaning="DGUX" />
+      <Value Index="5" Meaning="DECNT" />
+      <Value Index="6" Meaning="Digital UNIX" />
+      <Value Index="7" Meaning="OpenVMS" />
+      <Value Index="8" Meaning="HPUX" />
+      <Value Index="9" Meaning="AIX" />
+      <Value Index="10" Meaning="MVS" />
+      <Value Index="11" Meaning="OS400" />
+      <Value Index="12" Meaning="OS/2" />
+      <Value Index="13" Meaning="JaveVM" />
+      <Value Index="14" Meaning="MSDOS" />
+      <Value Index="15" Meaning="WIN3x" />
+      <Value Index="16" Meaning="WIN95" />
+      <Value Index="17" Meaning="WIN98" />
+      <Value Index="18" Meaning="WINNT" />
+      <Value Index="19" Meaning="WINCE" />
+      <Value Index="20" Meaning="NCR3000" />
+      <Value Index="21" Meaning="NetWare" />
+      <Value Index="22" Meaning="OSF" />
+      <Value Index="23" Meaning="DC/OS" />
+      <Value Index="24" Meaning="Reliant UNIX" />
+      <Value Index="25" Meaning="SCO UnixWare" />
+      <Value Index="26" Meaning="SCO OpenServer" />
+      <Value Index="27" Meaning="Sequent" />
+      <Value Index="28" Meaning="IRIX" />
+      <Value Index="29" Meaning="Solaris" />
+      <Value Index="30" Meaning="SunOS" />
+      <Value Index="31" Meaning="U6000" />
+      <Value Index="32" Meaning="ASERIES" />
+      <Value Index="33" Meaning="TandemNSK" />
+      <Value Index="34" Meaning="TandemNT" />
+      <Value Index="35" Meaning="BS2000" />
+      <Value Index="36" Meaning="LINUX" />
+      <Value Index="37" Meaning="Lynx" />
+      <Value Index="38" Meaning="XENIX" />
+      <Value Index="39" Meaning="VM/ESA" />
+      <Value Index="40" Meaning="Interactive UNIX" />
+      <Value Index="41" Meaning="BSDUNIX" />
+      <Value Index="42" Meaning="FreeBSD" />
+      <Value Index="43" Meaning="NetBSD" />
+      <Value Index="44" Meaning="GNU Hurd" />
+      <Value Index="45" Meaning="OS9" />
+      <Value Index="46" Meaning="MACH Kernel" />
+      <Value Index="47" Meaning="Inferno" />
+      <Value Index="48" Meaning="QNX" />
+      <Value Index="49" Meaning="EPOC" />
+      <Value Index="50" Meaning="IxWorks" />
+      <Value Index="51" Meaning="VxWorks" />
+      <Value Index="52" Meaning="MiNT" />
+      <Value Index="53" Meaning="BeOS" />
+      <Value Index="54" Meaning="HP MPE" />
+      <Value Index="55" Meaning="NextStep" />
+      <Value Index="56" Meaning="PalmPilot" />
+      <Value Index="57" Meaning="Rhapsody" />
+    </RegisterMappingType>
+  </MappingTypes>
+</IPConfiguration>

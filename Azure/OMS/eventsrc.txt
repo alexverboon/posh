@@ -1,0 +1,18 @@
+// Microsoft.Sirona.DataCollectors.EventLogDataCollector
+private static readonly string[] WMI_SUPPORTED_LOG_NAMES = new string[]
+{
+	"Application",
+	"DFS Replication",
+	"Directory Service",
+	"DNS Server",
+	"File Replication Service",
+	"Forefront Identity Manager",
+	"HardwareEvents",
+	"Internet Explorer",
+	"Key Management Service",
+	"Security",
+	"System",
+	"Windows Azure",
+	"Windows PowerShell",
+	"Operations Manager"
+};
